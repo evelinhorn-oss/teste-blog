@@ -3,16 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Street Art Blog | Graffitis</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
- <header>
-    <h1>Titulo do blog</h1>
-    <p>breve texto sobre o blog</p>
-  </header>
-  <main>
-    <h2>Subtitulo</h2>
-    <p>texto mais detalhado sebre o assunto</p>
-  </main>  
+
+    <header>
+        <div class="header-content">
+            <h1>Arte das Ruas</h1>
+            <p>Onde as paredes ganham vida e a cidade vira tela.</p>
+        </div>
+    </header>
+
+    <main>
+        <article class="post">
+            <div class="post-image">
+                <img src="https://images.unsplash.com/photo-1561055657-b9e0bf0fa360?auto=format&fit=crop&w=800&q=80" alt="Muro grafitado colorido">
+            </div>
+            
+            <div class="post-content">
+                <h2>A Expressão do Graffiti Moderno</h2>
+                <p>Mais do que tinta em um muro, o graffiti é uma voz urbana. Ele desafia a monotonia cinzenta das grandes metrópoles, transformando esquinas esquecidas em verdadeiras galerias de arte a céu aberto.</p>
+                <p>Cada traço carrega história, protesto e, acima de tudo, a pura identidade cultural da nossa geração.</p>
+                
+                <div class="interaction">
+                    <button class="like-btn" onclick="toggleLike()">
+                        <span class="heart-icon">❤</span> Curtir
+                    </button>
+                </div>
+            </div>
+        </article>
+    </main>  
+
+    <script>
+        function toggleLike() {
+            const btn = document.querySelector('.like-btn');
+            btn.classList.toggle('liked');
+        }
+    </script>
+
 </body>
 </html>
