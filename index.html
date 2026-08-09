@@ -4,12 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog das Flores</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
     
     <style>
         /* ==========================================================================
-           CONFIGURAÇÕES GERAIS E FUNDO VERDE COM ILUSTRAÇÃO DE GALHOS E FOLHAS
+           1. VARIÁVEIS DE CORES PASTÉIS E CONFIGURAÇÕES BASE
            ========================================================================== */
+        :root {
+            --pastel-bg-main: #fcf8f5;
+            --pastel-green-soft: #e8f0eb;
+            --pastel-pink-soft: #fde2e4;
+            --pastel-cream: #fff9f3;
+            --text-dark: #3a473e;
+            --text-calligraphy: #4a3b32;
+            --accent-gold: #c9a66b;
+            --shadow-soft: 0 12px 35px rgba(180, 160, 150, 0.18);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -17,212 +31,226 @@
         }
 
         body {
-            font-family: 'Lato', sans-serif;
-            color: #2e4033;
-            line-height: 1.6;
-            
-            /* Fundo verde elegante decorado com estampa de galhos e folhas em linhas brancas */
-            background-color: #264e36;
-            background-image: 
-                radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.05) 0%, transparent 80%),
-                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 100 100"><path d="M10,90 Q30,50 60,90 T100,90" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1.8"/><path d="M35,70 Q20,55 10,60" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1.2"/><path d="M35,70 Q50,55 55,62" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1.2"/><path d="M10,60 Q15,50 25,55 S20,65 10,60" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/><path d="M55,62 Q60,52 70,57 S65,67 55,62" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/><path d="M80,10 Q50,40 20,10" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/><path d="M50,25 Q40,15 42,5" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1"/><path d="M42,5 Q48,0 52,8 S45,12 42,5" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/></svg>');
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem;
+            color: var(--text-dark);
+            line-height: 1.7;
+            /* Fundo Pastel com Degradê Suave */
+            background: linear-gradient(135deg, #fbf7f4 0%, #f4edea 35%, #edf3ef 70%, #f7edf0 100%);
             background-attachment: fixed;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        h1, h2, h3 {
-            font-family: 'Playfair Display', serif;
+            padding: 0 25px;
         }
 
         /* ==========================================================================
-           CABEÇALHO / HERO
+           2. CABEÇALHO / HERO (ESTILO JARDIM ANTIGO)
            ========================================================================== */
         .hero {
-            background: linear-gradient(rgba(18, 41, 26, 0.4), rgba(18, 41, 26, 0.6)), 
+            position: relative;
+            background: linear-gradient(rgba(247, 241, 237, 0.55), rgba(232, 240, 235, 0.75)), 
                         url('https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1600&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
-            color: #ffffff;
             text-align: center;
-            padding: 90px 20px;
-            border-bottom: 4px solid rgba(255, 255, 255, 0.2);
+            padding: 110px 20px 90px;
+            border-bottom: 2px solid rgba(201, 166, 107, 0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
 
+        /* Título Caligráfico Antigo */
         .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
-        }
-
-        .hero-subtitle {
-            font-size: 1.35rem;
-            font-weight: 300;
-            font-style: italic;
-            opacity: 0.95;
+            font-family: 'Great Vibes', cursive;
+            font-size: 5rem;
+            color: #3b2f2f;
+            font-weight: 400;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+            margin-bottom: 5px;
             letter-spacing: 1px;
         }
 
+        .hero-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-style: italic;
+            color: #5a6b5c;
+            letter-spacing: 2px;
+        }
+
         /* ==========================================================================
-           SEÇÃO INTRODUÇÃO
+           3. SEÇÃO INTRODUÇÃO
            ========================================================================== */
         .intro {
-            padding: 50px 0;
+            padding: 70px 0 40px;
             text-align: center;
         }
 
         .intro .container {
-            background: rgba(255, 255, 255, 0.94);
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            backdrop-filter: blur(5px);
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(12px);
+            padding: 50px 40px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            box-shadow: var(--shadow-soft);
         }
 
         .intro h2 {
-            font-size: 2.2rem;
-            color: #1e3d2b;
-            margin-bottom: 18px;
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.5rem;
+            color: #4a5d4e;
+            margin-bottom: 15px;
+            font-weight: 400;
         }
 
         .intro p {
-            font-size: 1.1rem;
-            color: #2d4436;
-            max-width: 900px;
+            font-size: 1.3rem;
+            color: var(--text-dark);
+            max-width: 880px;
             margin: 0 auto;
+            text-align: justify;
+            text-align-last: center;
         }
 
         /* ==========================================================================
-           GALERIA E CARDS DE FLORES
+           4. GALERIA E CARDS PASTÉIS
            ========================================================================== */
         .galeria {
-            padding: 30px 0 80px 0;
+            padding: 40px 0 90px;
         }
 
         .galeria h2 {
             text-align: center;
-            font-size: 2.5rem;
-            color: #ffffff;
-            margin-bottom: 40px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+            font-family: 'Great Vibes', cursive;
+            font-size: 4rem;
+            color: #4a5d4e;
+            margin-bottom: 50px;
         }
 
         .flores-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
         }
 
         .flor-card {
-            border-radius: 18px;
+            border-radius: 24px;
             overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.25);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: var(--shadow-soft);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
             display: flex;
             flex-direction: column;
-            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
         .flor-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 16px 35px rgba(0,0,0,0.35);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(160, 140, 130, 0.25);
         }
 
         .flor-card img {
             width: 100%;
-            height: 240px;
+            height: 250px;
             object-fit: cover;
             display: block;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
 
-        /* Área do texto com cor em tom pastel definida por variável CSS */
         .flor-info {
-            padding: 24px;
+            padding: 28px;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
             background-color: var(--card-bg, #ffffff);
-            color: #2c3e50;
+            border-radius: 0 0 24px 24px;
         }
 
         .flor-info h3 {
-            font-size: 1.45rem;
-            margin-bottom: 12px;
-            color: #1a252f;
-            border-bottom: 2px solid rgba(0, 0, 0, 0.08);
-            padding-bottom: 8px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.7rem;
+            margin-bottom: 15px;
+            color: #332722;
+            border-bottom: 1px dashed rgba(201, 166, 107, 0.5);
+            padding-bottom: 10px;
         }
 
         .flor-info p {
-            font-size: 0.95rem;
-            margin-bottom: 6px;
-            color: #334e3e;
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+            color: #4f5d52;
+        }
+
+        .flor-info strong {
+            color: #2c382e;
+            font-weight: 600;
         }
 
         .flor-info .curiosidade {
-            margin-top: 10px;
-            font-size: 0.9rem;
-            background: rgba(255, 255, 255, 0.65);
-            padding: 10px 12px;
-            border-radius: 8px;
-            border-left: 3px solid rgba(0,0,0,0.15);
-            line-height: 1.4;
+            margin-top: 15px;
+            font-size: 1.05rem;
+            font-style: italic;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 12px 16px;
+            border-radius: 14px;
+            border-left: 3px solid var(--accent-gold);
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.01);
         }
 
         /* ==========================================================================
-           BOTÃO DE CURTIR
+           5. BOTÃO DE CURTIR PASTEL
            ========================================================================== */
         .btn-curtir {
-            padding: 10px 18px;
-            background-color: rgba(255, 255, 255, 0.9);
-            border: 1px solid rgba(0, 0, 0, 0.12);
-            border-radius: 25px;
-            color: #444;
-            font-weight: bold;
-            font-size: 0.9rem;
+            padding: 10px 22px;
+            background: #ffffff;
+            border: 1px solid var(--accent-gold);
+            border-radius: 30px;
+            color: #5c4d44;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
             align-self: flex-start;
-            margin-top: 16px;
+            margin-top: 20px;
             display: inline-flex;
             align-items: center;
-            gap: 6px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
         }
 
         .btn-curtir:hover {
-            background-color: #ffffff;
-            transform: scale(1.05);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            background-color: var(--pastel-pink-soft);
+            transform: scale(1.04);
+            border-color: #e0a3ad;
         }
 
         .btn-curtir.curtido {
-            background-color: #e74c3c;
+            background-color: #f4b6c2;
             color: #ffffff;
-            border-color: #e74c3c;
+            border-color: #e092a1;
         }
 
         /* ==========================================================================
-           RODAPÉ
+           6. RODAPÉ VINTAGE
            ========================================================================== */
         footer {
-            background-color: #183323;
-            color: #d1e7dd;
+            background: linear-gradient(135deg, #e2ebe4 0%, #d8e3dc 100%);
+            color: #3d4f41;
             text-align: center;
-            padding: 25px;
-            font-size: 0.95rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            padding: 35px 20px;
+            font-family: 'Great Vibes', cursive;
+            font-size: 2rem;
+            border-top: 1px solid rgba(201, 166, 107, 0.3);
         }
     </style>
 </head>
 <body>
     <header class="hero">
         <div class="hero-overlay">
-            <h1>🌸 Blog das Flores</h1>
+            <h1>Blog das Flores</h1>
             <p class="hero-subtitle">Um jardim virtual de descobertas</p>
         </div>
     </header>
@@ -243,11 +271,12 @@
 
     <section class="galeria">
         <div class="container">
-            <h2>Nossas 10 Flores Favoritas</h2>
+            <h2>Nossas Flores Favoritas</h2>
             <div class="flores-grid">
 
-                <article class="flor-card" style="--card-bg: #ffe4e1;">
-                    <img src="rosa.avif">
+                <article class="flor-card" style="--card-bg: #fde8e8;">
+                    <img src="rosa.avif" alt="Rosa Vermelha">
+                    <div class="flor-info">
                         <h3>🌹 Rosa Vermelha</h3>
                         <p><strong>Cor:</strong> Vermelho intenso</p>
                         <p><strong>Origem:</strong> Ásia (Pérsia e China)</p>
@@ -260,7 +289,7 @@
                     </div>
                 </article>
 
-                <article class="flor-card" style="--card-bg: #fffacd;">
+                <article class="flor-card" style="--card-bg: #fffbeb;">
                     <img src="https://images.unsplash.com/photo-1597848212624-a19eb35e2651?w=400&h=300&fit=crop" alt="Girassol">
                     <div class="flor-info">
                         <h3>🌻 Girassol</h3>
@@ -275,8 +304,8 @@
                     </div>
                 </article>
 
-                <article class="flor-card" style="--card-bg: #f3e8fa;">
-                    <img src="Orquidea.jpg">
+                <article class="flor-card" style="--card-bg: #f5edfa;">
+                    <img src="Orquidea.jpg" alt="Orquídea">
                     <div class="flor-info">
                         <h3>🌺 Orquídea Phalaenopsis</h3>
                         <p><strong>Cor:</strong> Branco, rosa ou roxo</p>
@@ -290,7 +319,7 @@
                     </div>
                 </article>
 
-                <article class="flor-card" style="--card-bg: #ffd1dc;">
+                <article class="flor-card" style="--card-bg: #fde2e4;">
                     <img src="https://images.unsplash.com/photo-1520763185298-1b434c919102?w=400&h=300&fit=crop" alt="Tulipa">
                     <div class="flor-info">
                         <h3>🌷 Tulipa</h3>
@@ -305,7 +334,7 @@
                     </div>
                 </article>
 
-                <article class="flor-card" style="--card-bg: #e8f8f5;">
+                <article class="flor-card" style="--card-bg: #eaf7f4;">
                     <img src="https://images.unsplash.com/photo-1589539118272-c28cb396a1c6?w=400&h=300&fit=crop" alt="Lírio">
                     <div class="flor-info">
                         <h3>🏵️ Lírio Branco</h3>
@@ -320,7 +349,7 @@
                     </div>
                 </article>
 
-                <article class="flor-card" style="--card-bg: #e1f5fe;">
+                <article class="flor-card" style="--card-bg: #e8f1f5;">
                     <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=400&h=300&fit=crop" alt="Hortênsia">
                     <div class="flor-info">
                         <h3>💠 Hortênsia</h3>
@@ -335,7 +364,7 @@
                     </div>
                 </article>
 
-                <article class="flor-card" style="--card-bg: #fff8e7;">
+                <article class="flor-card" style="--card-bg: #fef7e6;">
                     <img src="https://images.unsplash.com/photo-1462275646964-a0e3f2d585cd?w=400&h=300&fit=crop" alt="Margarida">
                     <div class="flor-info">
                         <h3>🌼 Margarida</h3>
@@ -350,7 +379,7 @@
                     </div>
                 </article>
 
-                <article class="flor-card" style="--card-bg: #e6e6fa;">
+                <article class="flor-card" style="--card-bg: #eeeaf8;">
                     <img src="https://images.unsplash.com/photo-1498579397066-22750a3cb424?w=400&h=300&fit=crop" alt="Lavanda">
                     <div class="flor-info">
                         <h3>💜 Lavanda</h3>
@@ -365,7 +394,7 @@
                     </div>
                 </article>
 
-                <article class="flor-card" style="--card-bg: #fde2e4;">
+                <article class="flor-card" style="--card-bg: #fde8ed;">
                     <img src="https://images.unsplash.com/photo-1563241527-3004b7be025f?w=400&h=300&fit=crop" alt="Peônia">
                     <div class="flor-info">
                         <h3>🌸 Peônia</h3>
@@ -380,8 +409,8 @@
                     </div>
                 </article>
 
-                <article class="flor-card" style="--card-bg: #f5f5dc;">
-                    <img src="https://images.unsplash.com/photo-1598335624167-b5302189a8c7?w=400&h=300&fit=crop" alt="Flor de Lotus">
+                <article class="flor-card" style="--card-bg: #f6f5ea;">
+                    <img src="https://images.unsplash.com/photo-1598335624167-b5302189a8c7?w=400&h=300&fit=crop" alt="Flor de Lótus">
                     <div class="flor-info">
                         <h3>🪷 Flor de Lótus</h3>
                         <p><strong>Cor:</strong> Rosa, branco ou azul</p>
@@ -400,7 +429,7 @@
     </section>
 
     <footer>
-        <p>🌿 Blog das Flores — Cultivado com carinho em 2026</p>
+        <p>🌿 Blog das Flores — Cultivado com carinho em 2026 🌿</p>
     </footer>
 
     <script>
@@ -410,12 +439,10 @@
             let qtd = parseInt(contador.textContent);
 
             if (botao.classList.contains('curtido')) {
-                // Se já estiver curtido, descurte
                 botao.classList.remove('curtido');
                 icone.textContent = '♡';
                 contador.textContent = qtd - 1;
             } else {
-                // Se não estiver curtido, curte
                 botao.classList.add('curtido');
                 icone.textContent = '♥';
                 contador.textContent = qtd + 1;
