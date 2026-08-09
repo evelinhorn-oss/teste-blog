@@ -1,2835 +1,2594 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
 
 <head>
 
-    <meta charset="UTF-8">
+```
+<meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
-    <title>Jardim das Flores — Diário Botânico</title>
-
-
-    <!-- =====================================================
-         FONTES
-    ====================================================== -->
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-
-    <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin
-    >
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=IM+Fell+English:ital@0;1&family=Playfair+Display:wght@400;500;600;700&display=swap"
-        rel="stylesheet"
-    >
+<title>Jardim das Flores — Diário Botânico</title>
 
 
-    <style>
+<!-- FONTES -->
 
-        /* =====================================================
-           PALETA
-        ===================================================== */
+<link rel="preconnect" href="https://fonts.googleapis.com">
 
-        :root {
+<link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+>
 
-            --papel: #efe2c6;
-            --papel-claro: #fff8e9;
-            --papel-creme: #f7edd7;
-            --papel-escuro: #d9c49d;
+<link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=IM+Fell+English:ital@0;1&family=Playfair+Display:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+>
 
-            --verde-floresta: #35483a;
-            --verde: #526653;
-            --verde-salvia: #84927b;
-            --verde-claro: #b7c0a9;
 
-            --rosa-antigo: #c88989;
-            --rosa-claro: #e8c5c0;
-            --rosa-suave: #f1d8d3;
+<style>
 
-            --lavanda: #aaa0bd;
+    :root {
 
-            --vinho: #71484a;
+        --papel: #efe2c6;
+        --papel-claro: #fff8e9;
+        --papel-creme: #f7edd7;
+        --papel-escuro: #d9c49d;
 
-            --pessego: #d9a98e;
+        --verde-floresta: #35483a;
+        --verde: #526653;
+        --verde-salvia: #84927b;
+        --verde-claro: #b7c0a9;
 
-            --dourado: #a98045;
-            --dourado-claro: #d7bd87;
-            --ouro-suave: #c8a86c;
+        --rosa-antigo: #c88989;
+        --rosa-claro: #e8c5c0;
 
-            --marrom: #49382e;
-            --marrom-claro: #705a49;
-            --texto-suave: #806d5c;
+        --lavanda: #aaa0bd;
 
-            --sombra:
-                0 15px 40px rgba(76,55,35,0.18);
+        --vinho: #71484a;
 
-            --sombra-forte:
-                0 25px 60px rgba(65,45,28,0.25);
+        --dourado: #a98045;
+        --dourado-claro: #d7bd87;
+
+        --marrom: #49382e;
+        --marrom-claro: #705a49;
+        --texto-suave: #806d5c;
+
+        --sombra:
+            0 15px 40px rgba(76,55,35,0.18);
+
+        --sombra-forte:
+            0 25px 60px rgba(65,45,28,0.25);
+    }
+
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+
+    body {
+
+        font-family:
+            "Cormorant Garamond",
+            serif;
+
+        font-size: 20px;
+
+        color: var(--marrom);
+
+        line-height: 1.7;
+
+        min-height: 100vh;
+
+        overflow-x: hidden;
+
+        background:
+
+            radial-gradient(
+                ellipse at 10% 20%,
+                rgba(137,102,59,0.10),
+                transparent 30%
+            ),
+
+            radial-gradient(
+                ellipse at 90% 80%,
+                rgba(123,86,49,0.08),
+                transparent 35%
+            ),
+
+            radial-gradient(
+                ellipse at 50% 50%,
+                rgba(255,255,255,0.50),
+                transparent 60%
+            ),
+
+            linear-gradient(
+                135deg,
+                #e6d4b2,
+                #f8eed9 25%,
+                #eee0c5 55%,
+                #f7ecd5 80%,
+                #dfcba5
+            );
+
+        background-attachment: fixed;
+    }
+
+
+    /* TEXTURA */
+
+    body::before {
+
+        content: "";
+
+        position: fixed;
+
+        inset: 0;
+
+        pointer-events: none;
+
+        z-index: 9999;
+
+        opacity: 0.15;
+
+        background-image:
+            url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+
+        mix-blend-mode: multiply;
+    }
+
+
+    body::after {
+
+        content: "";
+
+        position: fixed;
+
+        inset: 0;
+
+        pointer-events: none;
+
+        z-index: 9998;
+
+        box-shadow:
+            inset 0 0 150px rgba(73,50,29,0.20);
+    }
+
+
+    .container {
+
+        width:
+            min(1200px, 92%);
+
+        margin:
+            auto;
+    }
+
+
+    /* FLORES FLUTUANTES */
+
+    .flores-flutuantes {
+
+        position: fixed;
+
+        inset: 0;
+
+        pointer-events: none;
+
+        z-index: 1;
+
+        overflow: hidden;
+    }
+
+
+    .flores-flutuantes span {
+
+        position: absolute;
+
+        color:
+            rgba(89,105,82,0.15);
+
+        font-size: 28px;
+
+        animation:
+            flutuar 8s ease-in-out infinite;
+    }
+
+
+    .flores-flutuantes span:nth-child(1) {
+        left: 5%;
+        top: 20%;
+    }
+
+    .flores-flutuantes span:nth-child(2) {
+        right: 8%;
+        top: 30%;
+        animation-delay: 2s;
+    }
+
+    .flores-flutuantes span:nth-child(3) {
+        left: 10%;
+        bottom: 25%;
+        animation-delay: 1s;
+    }
+
+    .flores-flutuantes span:nth-child(4) {
+        right: 5%;
+        bottom: 15%;
+        animation-delay: 3s;
+    }
+
+    .flores-flutuantes span:nth-child(5) {
+        left: 45%;
+        top: 15%;
+        animation-delay: 4s;
+    }
+
+    .flores-flutuantes span:nth-child(6) {
+        right: 30%;
+        bottom: 10%;
+        animation-delay: 2.5s;
+    }
+
+    .flores-flutuantes span:nth-child(7) {
+        left: 70%;
+        top: 55%;
+        animation-delay: 5s;
+    }
+
+
+    @keyframes flutuar {
+
+        0%,
+        100% {
+            transform:
+                translateY(0)
+                rotate(0deg);
         }
 
+        50% {
+            transform:
+                translateY(-18px)
+                rotate(8deg);
+        }
+    }
 
-        /* =====================================================
-           RESET
-        ===================================================== */
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+    /* HERO */
+
+    .hero {
+
+        position: relative;
+
+        min-height: 720px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        text-align: center;
+
+        overflow: hidden;
+
+        background:
+
+            linear-gradient(
+                rgba(43,37,31,0.30),
+                rgba(50,40,31,0.67)
+            ),
+
+            url("https://images.unsplash.com/photo-1496062031456-07b8f162a322?w=1800&auto=format&fit=crop&q=90")
+            center/cover;
+
+        border-bottom:
+            3px double var(--dourado);
+
+        box-shadow:
+            0 15px 40px rgba(54,39,25,0.30);
+    }
+
+
+    .hero .brilho {
+
+        position: absolute;
+
+        inset: 0;
+
+        background:
+            radial-gradient(
+                circle at center,
+                rgba(255,235,190,0.13),
+                transparent 45%
+            );
+    }
+
+
+    .hero::before {
+
+        content: "";
+
+        position: absolute;
+
+        inset: 25px;
+
+        border:
+            1px solid rgba(235,211,166,0.8);
+
+        pointer-events: none;
+    }
+
+
+    .hero::after {
+
+        content: "❦";
+
+        position: absolute;
+
+        bottom: 22px;
+
+        left: 50%;
+
+        transform:
+            translateX(-50%);
+
+        font-size: 34px;
+
+        color:
+            var(--dourado-claro);
+    }
+
+
+    .hero-content {
+
+        position: relative;
+
+        z-index: 3;
+
+        max-width: 1000px;
+
+        padding: 50px;
+
+        animation:
+            aparecer 1.5s ease both;
+    }
+
+
+    .selo-botanico {
+
+        display: inline-block;
+
+        padding: 8px 22px;
+
+        border:
+            1px solid rgba(220,190,130,0.75);
+
+        color:
+            #ead3a4;
+
+        font-family:
+            "IM Fell English",
+            serif;
+
+        font-size: 14px;
+
+        letter-spacing: 4px;
+
+        margin-bottom: 20px;
+
+        background:
+            rgba(40,32,24,0.20);
+    }
+
+
+    .pequeno-titulo {
+
+        font-family:
+            "IM Fell English",
+            serif;
+
+        font-size: 15px;
+
+        letter-spacing: 8px;
+
+        text-transform: uppercase;
+
+        color:
+            #ead3a4;
+
+        margin-bottom: 20px;
+    }
+
+
+    .hero h1 {
+
+        font-family:
+            "Great Vibes",
+            cursive;
+
+        font-size:
+            clamp(5rem,11vw,9rem);
+
+        font-weight: 400;
+
+        line-height: .95;
+
+        color:
+            #fff8e7;
+
+        text-shadow:
+            2px 3px 0 rgba(53,42,29,0.35),
+            0 0 25px rgba(255,244,207,0.25);
+
+        margin-bottom: 25px;
+    }
+
+
+    .hero-subtitle {
+
+        font-family:
+            "IM Fell English",
+            serif;
+
+        font-size: 25px;
+
+        font-style: italic;
+
+        letter-spacing: 2px;
+
+        color:
+            #f8ecd5;
+
+        max-width: 650px;
+
+        margin: auto;
+    }
+
+
+    .ornamento {
+
+        margin:
+            25px auto;
+
+        display:
+            flex;
+
+        justify-content:
+            center;
+
+        align-items:
+            center;
+
+        gap: 15px;
+
+        color:
+            var(--dourado-claro);
+
+        font-size: 22px;
+    }
+
+
+    .ornamento::before,
+    .ornamento::after {
+
+        content: "";
+
+        width: 90px;
+
+        height: 1px;
+
+        background:
+            var(--dourado-claro);
+    }
+
+
+    @keyframes aparecer {
+
+        from {
+            opacity: 0;
+            transform: translateY(30px);
         }
 
-
-        html {
-            scroll-behavior: smooth;
+        to {
+            opacity: 1;
+            transform: translateY(0);
         }
+    }
 
+
+    /* INTRO */
+
+    .intro {
+
+        padding:
+            100px 0 60px;
+
+        position: relative;
+
+        z-index: 2;
+    }
+
+
+    .papel-card {
+
+        position: relative;
+
+        background:
+
+            linear-gradient(
+                rgba(255,249,232,.94),
+                rgba(239,224,195,.96)
+            );
+
+        padding:
+            75px 80px;
+
+        border:
+            1px solid rgba(165,126,68,.65);
+
+        box-shadow:
+            var(--sombra);
+    }
+
+
+    .papel-card::before {
+
+        content: "";
+
+        position: absolute;
+
+        inset: 12px;
+
+        border:
+            1px solid rgba(169,130,72,.25);
+
+        pointer-events: none;
+    }
+
+
+    .papel-card h2,
+    .historias-titulo h2,
+    .citacao h2 {
+
+        font-family:
+            "Great Vibes",
+            cursive;
+
+        font-weight: 400;
+
+        color:
+            var(--verde-floresta);
+
+        text-align: center;
+
+        font-size: 4.5rem;
+
+        line-height: 1.2;
+
+        margin-bottom: 25px;
+    }
+
+
+    .papel-card p {
+
+        max-width: 900px;
+
+        margin: auto;
+
+        text-align: center;
+
+        font-family:
+            "IM Fell English",
+            serif;
+
+        font-size: 21px;
+
+        color:
+            #59483a;
+    }
+
+
+    .divisor {
+
+        text-align: center;
+
+        margin:
+            20px auto 60px;
+
+        color:
+            var(--dourado);
+
+        font-size: 28px;
+    }
+
+
+    .divisor span {
+        margin: 0 15px;
+    }
+
+
+    /* GALERIA */
+
+    .galeria {
+
+        padding:
+            60px 0 90px;
+
+        position: relative;
+
+        z-index: 2;
+    }
+
+
+    .titulo-secao {
+
+        text-align: center;
+
+        margin-bottom: 55px;
+    }
+
+
+    .titulo-secao h2 {
+
+        font-family:
+            "Great Vibes",
+            cursive;
+
+        font-weight: 400;
+
+        color:
+            var(--verde-floresta);
+
+        font-size: 4.5rem;
+    }
+
+
+    .titulo-secao .subtitulo {
+
+        font-family:
+            "IM Fell English",
+            serif;
+
+        font-style: italic;
+
+        color:
+            var(--marrom-claro);
+
+        font-size: 19px;
+    }
+
+
+    .flores-grid {
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(auto-fit,minmax(300px,1fr));
+
+        gap: 35px;
+    }
+
+
+    .flor-card {
+
+        position: relative;
+
+        overflow: hidden;
+
+        background:
+            linear-gradient(
+                135deg,
+                #fff9e9,
+                #f2e2c4
+            );
+
+        border:
+            1px solid rgba(155,116,60,.55);
+
+        box-shadow:
+            0 12px 28px rgba(72,50,30,.17);
+
+        transition:
+            transform .5s ease,
+            box-shadow .5s ease;
+    }
+
+
+    .flor-card:hover {
+
+        transform:
+            translateY(-12px)
+            rotate(-.7deg);
+
+        box-shadow:
+            var(--sombra-forte);
+    }
+
+
+    .flor-card img {
+
+        width: 100%;
+
+        height: 260px;
+
+        object-fit: cover;
+
+        display: block;
+
+        filter:
+            sepia(8%)
+            saturate(88%);
+
+        transition:
+            transform .7s ease;
+    }
+
+
+    .flor-card:hover img {
+        transform: scale(1.06);
+    }
+
+
+    .flor-info {
+
+        padding: 30px;
+    }
+
+
+    .flor-info h3 {
+
+        font-family:
+            "Playfair Display",
+            serif;
+
+        font-size: 25px;
+
+        color:
+            var(--marrom);
+
+        margin-bottom: 18px;
+
+        text-align: center;
+
+        padding-bottom: 14px;
+
+        border-bottom:
+            1px solid rgba(169,130,72,.4);
+    }
+
+
+    .flor-info p {
+
+        font-size: 19px;
+
+        margin-bottom: 8px;
+
+        color:
+            #594a3d;
+    }
+
+
+    .flor-info strong {
+        color: #3f513f;
+    }
+
+
+    .curiosidade {
+
+        margin-top: 22px;
+
+        padding: 18px 20px;
+
+        background:
+            rgba(255,248,226,.78);
+
+        border-left:
+            3px solid var(--dourado);
+
+        font-family:
+            "IM Fell English",
+            serif;
+
+        font-style: italic;
+
+        font-size: 17px;
+
+        color:
+            var(--marrom-claro);
+    }
+
+
+    /* BOTÃO */
+
+    .btn-curtir {
+
+        margin-top: 22px;
+
+        padding:
+            10px 24px;
+
+        background:
+            rgba(255,249,234,.7);
+
+        border:
+            1px solid var(--dourado);
+
+        color:
+            var(--marrom);
+
+        font-family:
+            "Cormorant Garamond",
+            serif;
+
+        font-size: 18px;
+
+        cursor: pointer;
+
+        border-radius: 50px;
+
+        transition: .3s ease;
+    }
+
+
+    .btn-curtir:hover {
+
+        background:
+            var(--rosa-claro);
+
+        transform:
+            translateY(-2px);
+    }
+
+
+    .btn-curtir.curtido {
+
+        background:
+            linear-gradient(
+                135deg,
+                #c88787,
+                #a9636b
+            );
+
+        color: white;
+    }
+
+
+    /* =====================================================
+       HISTÓRIAS
+    ====================================================== */
+
+    .historias {
+
+        padding:
+            40px 0 100px;
+
+        position:
+            relative;
+
+        z-index:
+            2;
+    }
+
+
+    .historias-titulo {
+
+        text-align:
+            center;
+
+        margin-bottom:
+            55px;
+    }
+
+
+    .historias-titulo h2 {
+
+        margin-bottom:
+            10px;
+    }
+
+
+    .historias-titulo p {
+
+        font-family:
+            "IM Fell English",
+            serif;
+
+        font-size:
+            20px;
+
+        font-style:
+            italic;
+
+        color:
+            var(--marrom-claro);
+    }
+
+
+    .historia-flor {
+
+        position:
+            relative;
+
+        margin-bottom:
+            30px;
+
+        padding:
+            40px 45px;
+
+        background:
+
+            linear-gradient(
+                135deg,
+                rgba(255,249,234,.96),
+                rgba(239,224,195,.94)
+            );
+
+        border:
+            1px solid rgba(165,126,68,.55);
+
+        box-shadow:
+            0 10px 28px rgba(72,50,30,.13);
+
+        overflow:
+            hidden;
+    }
+
+
+    .historia-flor::before {
+
+        content: "";
+
+        position:
+            absolute;
+
+        inset:
+            9px;
+
+        border:
+            1px solid rgba(161,121,65,.25);
+
+        pointer-events:
+            none;
+    }
+
+
+    .historia-flor::after {
+
+        content:
+            "❦";
+
+        position:
+            absolute;
+
+        right:
+            25px;
+
+        bottom:
+            12px;
+
+        font-size:
+            40px;
+
+        color:
+            rgba(169,130,72,.25);
+    }
+
+
+    .historia-cabecalho {
+
+        display:
+            flex;
+
+        align-items:
+            center;
+
+        gap:
+            18px;
+
+        margin-bottom:
+            20px;
+
+        position:
+            relative;
+
+        z-index:
+            1;
+    }
+
+
+    .historia-icone {
+
+        width:
+            68px;
+
+        height:
+            68px;
+
+        display:
+            flex;
+
+        align-items:
+            center;
+
+        justify-content:
+            center;
+
+        flex-shrink:
+            0;
+
+        border:
+            1px solid var(--dourado);
+
+        border-radius:
+            50%;
+
+        background:
+            rgba(255,248,226,.8);
+
+        font-size:
+            32px;
+    }
+
+
+    .historia-flor h3 {
+
+        font-family:
+            "Playfair Display",
+            serif;
+
+        font-size:
+            29px;
+
+        color:
+            var(--verde-floresta);
+    }
+
+
+    .historia-nome-cientifico {
+
+        font-family:
+            "IM Fell English",
+            serif;
+
+        font-style:
+            italic;
+
+        font-size:
+            17px;
+
+        color:
+            var(--texto-suave);
+    }
+
+
+    .historia-flor p {
+
+        position:
+            relative;
+
+        z-index:
+            1;
+
+        font-size:
+            20px;
+
+        line-height:
+            1.8;
+
+        color:
+            #59483a;
+
+        margin-bottom:
+            15px;
+    }
+
+
+    .historia-flor strong {
+        color:
+            var(--vinho);
+    }
+
+
+    /* CITAÇÃO */
+
+    .citacao {
+
+        padding:
+            40px 20px 100px;
+
+        text-align:
+            center;
+
+        position:
+            relative;
+
+        z-index:
+            2;
+    }
+
+
+    .citacao-moldura {
+
+        max-width:
+            850px;
+
+        margin:
+            auto;
+
+        padding:
+            55px 40px;
+
+        background:
+            rgba(255,248,230,.55);
+
+        border-top:
+            1px solid var(--dourado);
+
+        border-bottom:
+            1px solid var(--dourado);
+    }
+
+
+    .citacao-flor {
+
+        font-size:
+            30px;
+
+        color:
+            var(--dourado);
+    }
+
+
+    .citacao-moldura p {
+
+        font-family:
+            "Great Vibes",
+            cursive;
+
+        font-size:
+            clamp(2.5rem,5vw,4rem);
+
+        color:
+            var(--verde-floresta);
+
+        line-height:
+            1.2;
+
+        margin:
+            15px 0;
+    }
+
+
+    .citacao-moldura small {
+
+        font-family:
+            "IM Fell English",
+            serif;
+
+        color:
+            var(--marrom-claro);
+
+        font-style:
+            italic;
+
+        letter-spacing:
+            2px;
+    }
+
+
+    /* FOOTER */
+
+    footer {
+
+        position:
+            relative;
+
+        background:
+            linear-gradient(
+                135deg,
+                #344638,
+                #506352
+            );
+
+        color:
+            #f3e4c4;
+
+        text-align:
+            center;
+
+        padding:
+            65px 20px;
+
+        border-top:
+            3px double var(--dourado);
+
+        z-index:
+            2;
+    }
+
+
+    footer::before {
+
+        content:
+            "❦";
+
+        display:
+            block;
+
+        font-size:
+            38px;
+
+        color:
+            var(--dourado-claro);
+
+        margin-bottom:
+            10px;
+    }
+
+
+    footer h3 {
+
+        font-family:
+            "Great Vibes",
+            cursive;
+
+        font-size:
+            50px;
+
+        font-weight:
+            400;
+    }
+
+
+    footer p {
+
+        font-family:
+            "IM Fell English",
+            serif;
+
+        margin-top:
+            8px;
+
+        font-style:
+            italic;
+
+        color:
+            #e5d8be;
+    }
+
+
+    /* RESPONSIVO */
+
+    @media (max-width:700px) {
 
         body {
-
-            font-family:
-                "Cormorant Garamond",
-                serif;
-
-            font-size: 20px;
-
-            color:
-                var(--marrom);
-
-            line-height: 1.7;
-
-            min-height: 100vh;
-
-            overflow-x: hidden;
-
-            position: relative;
-
-            background:
-
-                radial-gradient(
-                    ellipse at 10% 20%,
-                    rgba(137,102,59,0.10),
-                    transparent 30%
-                ),
-
-                radial-gradient(
-                    ellipse at 90% 80%,
-                    rgba(123,86,49,0.08),
-                    transparent 35%
-                ),
-
-                radial-gradient(
-                    ellipse at 50% 50%,
-                    rgba(255,255,255,0.50),
-                    transparent 60%
-                ),
-
-                linear-gradient(
-                    135deg,
-                    #e6d4b2,
-                    #f8eed9 25%,
-                    #eee0c5 55%,
-                    #f7ecd5 80%,
-                    #dfcba5
-                );
-
-            background-attachment: fixed;
+            font-size: 18px;
         }
 
-
-        /* =====================================================
-           TEXTURA DE PAPEL
-        ===================================================== */
-
-        body::before {
-
-            content: "";
-
-            position: fixed;
-
-            inset: 0;
-
-            pointer-events: none;
-
-            z-index: 9999;
-
-            opacity: 0.18;
-
-            background-image:
-                url("https://www.transparenttextures.com/patterns/paper-fibers.png");
-
-            mix-blend-mode: multiply;
-        }
-
-
-        body::after {
-
-            content: "";
-
-            position: fixed;
-
-            inset: 0;
-
-            pointer-events: none;
-
-            z-index: 9998;
-
-            box-shadow:
-                inset 0 0 150px rgba(73,50,29,0.20);
-        }
-
-
-        .container {
-
-            width:
-                min(1200px, 92%);
-
-            margin:
-                auto;
-        }
-
-
-        /* =====================================================
-           FLORES FLUTUANTES
-        ===================================================== */
-
-        .flores-flutuantes {
-
-            position: fixed;
-
-            inset: 0;
-
-            pointer-events: none;
-
-            z-index: 1;
-
-            overflow: hidden;
-        }
-
-
-        .flores-flutuantes span {
-
-            position: absolute;
-
-            color:
-                rgba(89,105,82,0.15);
-
-            font-size: 28px;
-
-            animation:
-                flutuar 8s ease-in-out infinite;
-        }
-
-
-        .flores-flutuantes span:nth-child(1) {
-            left: 5%;
-            top: 20%;
-        }
-
-
-        .flores-flutuantes span:nth-child(2) {
-            right: 8%;
-            top: 30%;
-            animation-delay: 2s;
-        }
-
-
-        .flores-flutuantes span:nth-child(3) {
-            left: 10%;
-            bottom: 25%;
-            animation-delay: 1s;
-        }
-
-
-        .flores-flutuantes span:nth-child(4) {
-            right: 5%;
-            bottom: 15%;
-            animation-delay: 3s;
-        }
-
-
-        .flores-flutuantes span:nth-child(5) {
-            left: 45%;
-            top: 15%;
-            animation-delay: 4s;
-        }
-
-
-        .flores-flutuantes span:nth-child(6) {
-            right: 30%;
-            bottom: 10%;
-            animation-delay: 2.5s;
-        }
-
-
-        .flores-flutuantes span:nth-child(7) {
-            left: 70%;
-            top: 55%;
-            animation-delay: 5s;
-        }
-
-
-        @keyframes flutuar {
-
-            0%,
-            100% {
-                transform:
-                    translateY(0)
-                    rotate(0deg);
-            }
-
-            50% {
-                transform:
-                    translateY(-18px)
-                    rotate(8deg);
-            }
-        }
-
-
-        /* =====================================================
-           HERO
-        ===================================================== */
 
         .hero {
-
-            position: relative;
-
-            min-height: 720px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            text-align: center;
-
-            overflow: hidden;
-
-            /*
-                IMAGEM PRINCIPAL NOVA
-                Jardim de rosas com aparência romântica,
-                delicada e compatível com o tema botânico.
-            */
-
-            background:
-
-                linear-gradient(
-                    rgba(43,37,31,0.30),
-                    rgba(50,40,31,0.67)
-                ),
-
-                url("https://images.unsplash.com/photo-1496062031456-07b8f162a322?w=1800&auto=format&fit=crop&q=90")
-                center/cover;
-
-            border-bottom:
-                3px double var(--dourado);
-
-            box-shadow:
-                0 15px 40px rgba(54,39,25,0.30);
-        }
-
-
-        /*
-            Leve camada dourada sobre a imagem
-        */
-
-        .hero .brilho {
-
-            position: absolute;
-
-            inset: 0;
-
-            background:
-                radial-gradient(
-                    circle at center,
-                    rgba(255,235,190,0.13),
-                    transparent 45%
-                );
-
-            pointer-events: none;
+            min-height: 600px;
         }
 
 
         .hero::before {
-
-            content: "";
-
-            position: absolute;
-
-            inset: 25px;
-
-            border:
-                1px solid rgba(235,211,166,0.8);
-
-            box-shadow:
-                inset 0 0 0 6px rgba(255,255,255,0.04);
-
-            pointer-events: none;
-        }
-
-
-        .hero::after {
-
-            content: "❦";
-
-            position: absolute;
-
-            bottom: 22px;
-
-            left: 50%;
-
-            transform:
-                translateX(-50%);
-
-            font-size: 34px;
-
-            color:
-                var(--dourado-claro);
+            inset: 15px;
         }
 
 
         .hero-content {
-
-            position: relative;
-
-            z-index: 3;
-
-            max-width: 1000px;
-
-            padding: 50px;
-
-            animation:
-                aparecer 1.5s ease both;
-        }
-
-
-        .selo-botanico {
-
-            display: inline-block;
-
-            padding:
-                8px 22px;
-
-            border:
-                1px solid rgba(220,190,130,0.75);
-
-            color:
-                #ead3a4;
-
-            font-family:
-                "IM Fell English",
-                serif;
-
-            font-size: 14px;
-
-            letter-spacing: 4px;
-
-            margin-bottom: 20px;
-
-            background:
-                rgba(40,32,24,0.20);
-
-            box-shadow:
-                0 5px 20px rgba(0,0,0,0.12);
-        }
-
-
-        .pequeno-titulo {
-
-            font-family:
-                "IM Fell English",
-                serif;
-
-            font-size: 15px;
-
-            letter-spacing: 8px;
-
-            text-transform: uppercase;
-
-            color:
-                #ead3a4;
-
-            margin-bottom: 20px;
+            padding: 30px 20px;
         }
 
 
         .hero h1 {
-
-            font-family:
-                "Great Vibes",
-                cursive;
-
-            font-size:
-                clamp(5rem,11vw,9rem);
-
-            font-weight: 400;
-
-            line-height: 0.95;
-
-            color:
-                #fff8e7;
-
-            text-shadow:
-
-                2px 3px 0 rgba(53,42,29,0.35),
-
-                0 0 25px rgba(255,244,207,0.25);
-
-            margin-bottom: 25px;
-
-            letter-spacing: 2px;
+            font-size: 4.5rem;
         }
 
 
         .hero-subtitle {
-
-            font-family:
-                "IM Fell English",
-                serif;
-
-            font-size: 25px;
-
-            font-style: italic;
-
-            letter-spacing: 2px;
-
-            color:
-                #f8ecd5;
-
-            max-width: 650px;
-
-            margin: auto;
+            font-size: 20px;
         }
 
 
-        .ornamento {
-
-            margin:
-                25px auto;
-
-            display:
-                flex;
-
-            justify-content:
-                center;
-
-            align-items:
-                center;
-
-            gap: 15px;
-
-            color:
-                var(--dourado-claro);
-
-            font-size: 22px;
-        }
-
-
-        .ornamento::before,
-        .ornamento::after {
-
-            content: "";
-
-            width: 90px;
-
-            height: 1px;
-
-            background:
-                var(--dourado-claro);
-        }
-
-
-        @keyframes aparecer {
-
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-
-        /* =====================================================
-           INTRODUÇÃO
-        ===================================================== */
-
-        .intro {
-
-            padding:
-                100px 0 60px;
-
-            position: relative;
-
-            z-index: 2;
+        .pequeno-titulo {
+            letter-spacing: 4px;
         }
 
 
         .papel-card {
-
-            position: relative;
-
-            background:
-
-                linear-gradient(
-                    rgba(255,249,232,0.94),
-                    rgba(239,224,195,0.96)
-                );
-
-            padding:
-                75px 80px;
-
-            border:
-                1px solid rgba(165,126,68,0.65);
-
-            box-shadow:
-                var(--sombra);
-
-            border-radius: 3px;
-
-            overflow: hidden;
+            padding: 45px 25px;
         }
 
 
-        .papel-card::before {
-
-            content: "";
-
-            position: absolute;
-
-            inset: 12px;
-
-            border:
-                1px solid rgba(169,130,72,0.25);
-
-            pointer-events: none;
-        }
-
-
-        .papel-card::after {
-
-            content: "❦";
-
-            position: absolute;
-
-            right: 28px;
-
-            bottom: 12px;
-
-            font-size: 50px;
-
-            color:
-                rgba(169,130,72,0.45);
-        }
-
-
-        .intro h2,
-        .galeria h2 {
-
-            font-family:
-                "Great Vibes",
-                cursive;
-
-            font-weight: 400;
-
-            color:
-                var(--verde-floresta);
-
-            text-align:
-                center;
-
-            font-size:
-                4.5rem;
-
-            line-height:
-                1.2;
-
-            margin-bottom:
-                25px;
-        }
-
-
-        .intro p {
-
-            max-width: 900px;
-
-            margin:
-                auto;
-
-            text-align:
-                center;
-
-            font-family:
-                "IM Fell English",
-                serif;
-
-            font-size:
-                21px;
-
-            color:
-                #59483a;
-        }
-
-
-        /* =====================================================
-           DIVISOR
-        ===================================================== */
-
-        .divisor {
-
-            text-align:
-                center;
-
-            margin:
-                20px auto 60px;
-
-            color:
-                var(--dourado);
-
-            font-size:
-                28px;
-        }
-
-
-        .divisor span {
-
-            margin:
-                0 15px;
-        }
-
-
-        /* =====================================================
-           GALERIA
-        ===================================================== */
-
-        .galeria {
-
-            padding:
-                60px 0 90px;
-
-            position:
-                relative;
-
-            z-index:
-                2;
-        }
-
-
-        .titulo-secao {
-
-            text-align:
-                center;
-
-            margin-bottom:
-                55px;
-        }
-
-
-        .titulo-secao .subtitulo {
-
-            font-family:
-                "IM Fell English",
-                serif;
-
-            font-style:
-                italic;
-
-            color:
-                var(--marrom-claro);
-
-            font-size:
-                19px;
+        .papel-card h2,
+        .titulo-secao h2,
+        .historias-titulo h2 {
+            font-size: 3.5rem;
         }
 
 
         .flores-grid {
-
-            display:
-                grid;
-
-            grid-template-columns:
-                repeat(auto-fit,minmax(300px,1fr));
-
-            gap:
-                35px;
-        }
-
-
-        /* =====================================================
-           CARDS
-        ===================================================== */
-
-        .flor-card {
-
-            position:
-                relative;
-
-            overflow:
-                hidden;
-
-            background:
-
-                linear-gradient(
-                    135deg,
-                    #fff9e9,
-                    #f2e2c4
-                );
-
-            border:
-                1px solid rgba(155,116,60,0.55);
-
-            box-shadow:
-                0 12px 28px rgba(72,50,30,0.17);
-
-            transition:
-
-                transform .5s cubic-bezier(.2,.8,.2,1),
-
-                box-shadow .5s ease;
-
-            border-radius:
-                3px;
-
-            isolation:
-                isolate;
-        }
-
-
-        .flor-card::before {
-
-            content: "";
-
-            position:
-                absolute;
-
-            inset:
-                9px;
-
-            border:
-                1px solid rgba(161,121,65,0.28);
-
-            pointer-events:
-                none;
-
-            z-index:
-                5;
-        }
-
-
-        .flor-card::after {
-
-            content:
-                "❦";
-
-            position:
-                absolute;
-
-            top:
-                12px;
-
-            right:
-                17px;
-
-            font-size:
-                25px;
-
-            color:
-                rgba(255,248,225,0.85);
-
-            z-index:
-                6;
-
-            text-shadow:
-                0 1px 4px rgba(0,0,0,0.3);
-        }
-
-
-        .flor-card:hover {
-
-            transform:
-                translateY(-12px)
-                rotate(-0.7deg);
-
-            box-shadow:
-                var(--sombra-forte);
+            grid-template-columns: 1fr;
         }
 
 
         .flor-card img {
-
-            width:
-                100%;
-
-            height:
-                260px;
-
-            object-fit:
-                cover;
-
-            display:
-                block;
-
-            filter:
-                sepia(8%)
-                saturate(88%);
-
-            transition:
-                transform .7s ease,
-                filter .7s ease;
+            height: 230px;
         }
 
 
-        .flor-card:hover img {
-
-            transform:
-                scale(1.06);
-
-            filter:
-                sepia(2%)
-                saturate(105%);
-        }
-
-
-        .flor-info {
-
+        .historia-flor {
             padding:
-                30px;
-
-            position:
-                relative;
+                30px 25px;
         }
 
 
-        .flor-card:nth-child(3n+1) {
-            --cor-flor: #b87979;
+        .historia-cabecalho {
+            gap: 12px;
         }
 
 
-        .flor-card:nth-child(3n+2) {
-            --cor-flor: #71866f;
+        .historia-icone {
+
+            width: 55px;
+
+            height: 55px;
+
+            font-size: 27px;
         }
 
 
-        .flor-card:nth-child(3n+3) {
-            --cor-flor: #9889a8;
+        .historia-flor h3 {
+            font-size: 23px;
         }
 
 
-        .flor-info h3 {
-
-            font-family:
-                "Playfair Display",
-                serif;
-
-            font-size:
-                25px;
-
-            color:
-                var(--marrom);
-
-            margin-bottom:
-                18px;
-
-            text-align:
-                center;
-
-            padding-bottom:
-                14px;
-
-            border-bottom:
-                1px solid rgba(169,130,72,0.4);
-
-            position:
-                relative;
-        }
-
-
-        .flor-info h3::after {
-
-            content:
-                "✿";
-
-            display:
-                block;
-
-            color:
-                var(--cor-flor);
-
-            font-size:
-                15px;
-
-            margin-top:
-                5px;
-        }
-
-
-        .flor-info p {
-
-            font-family:
-                "Cormorant Garamond",
-                serif;
-
-            font-size:
-                19px;
-
-            margin-bottom:
-                8px;
-
-            color:
-                #594a3d;
-        }
-
-
-        .flor-info strong {
-
-            color:
-                #3f513f;
-
-            font-weight:
-                700;
-        }
-
-
-        /* =====================================================
-           CURIOSIDADE
-        ===================================================== */
-
-        .curiosidade {
-
-            margin-top:
-                22px;
-
-            padding:
-                18px 20px;
-
-            background:
-                rgba(255,248,226,0.78);
-
-            border-left:
-                3px solid var(--dourado);
-
-            font-family:
-                "IM Fell English",
-                serif;
-
-            font-style:
-                italic;
-
-            font-size:
-                17px;
-
-            color:
-                var(--marrom-claro);
-
-            box-shadow:
-                inset 0 0 20px rgba(90,60,30,0.05);
-
-            position:
-                relative;
-        }
-
-
-        .curiosidade::before {
-
-            content:
-                "✎";
-
-            position:
-                absolute;
-
-            top:
-                -12px;
-
-            right:
-                12px;
-
-            font-size:
-                22px;
-
-            color:
-                var(--dourado);
-        }
-
-
-        /* =====================================================
-           BOTÃO CURTIR
-        ===================================================== */
-
-        .botao-area {
-
-            position:
-                relative;
-
-            display:
-                inline-block;
-        }
-
-
-        .btn-curtir {
-
-            margin-top:
-                22px;
-
-            padding:
-                10px 24px;
-
-            background:
-                rgba(255,249,234,0.7);
-
-            border:
-                1px solid var(--dourado);
-
-            color:
-                var(--marrom);
-
-            font-family:
-                "Cormorant Garamond",
-                serif;
-
-            font-size:
-                18px;
-
-            cursor:
-                pointer;
-
-            border-radius:
-                50px;
-
-            transition:
-                all .3s ease;
-
-            box-shadow:
-                0 4px 12px rgba(80,50,30,0.08);
-
-            position:
-                relative;
-
-            z-index:
-                2;
-        }
-
-
-        .btn-curtir:hover {
-
-            background:
-                var(--rosa-claro);
-
-            border-color:
-                var(--rosa-antigo);
-
-            color:
-                #653f42;
-
-            transform:
-                translateY(-2px);
-        }
-
-
-        .btn-curtir.curtido {
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #c88787,
-                    #a9636b
-                );
-
-            color:
-                white;
-
-            border-color:
-                #965b60;
-
-            box-shadow:
-                0 6px 18px rgba(160,90,95,0.25);
-        }
-
-
-        .btn-curtir.curtido .icone {
-
-            animation:
-                coracao .4s ease;
-        }
-
-
-        @keyframes coracao {
-
-            0% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.5);
-            }
-
-            100% {
-                transform: scale(1);
-            }
-        }
-
-
-        /* =====================================================
-           CORAÇÕES QUE SALTAM
-        ===================================================== */
-
-        .coracoes {
-
-            position:
-                absolute;
-
-            left:
-                50%;
-
-            top:
-                10px;
-
-            width:
-                0;
-
-            height:
-                0;
-
-            pointer-events:
-                none;
-
-            z-index:
-                10;
-        }
-
-
-        .coracao-salto {
-
-            position:
-                absolute;
-
-            left:
-                0;
-
-            top:
-                0;
-
-            color:
-                var(--rosa-antigo);
-
-            font-size:
-                20px;
-
-            opacity:
-                0;
-
-            animation:
-                saltoCoracao 1.1s ease-out forwards;
-
-            text-shadow:
-                0 2px 5px rgba(100,50,50,0.18);
-        }
-
-
-        .coracao-salto:nth-child(2) {
-            color: #b56e76;
-        }
-
-
-        .coracao-salto:nth-child(3) {
-            color: #d49a9b;
-        }
-
-
-        .coracao-salto:nth-child(4) {
-            color: #9f6b70;
-        }
-
-
-        .coracao-salto:nth-child(5) {
-            color: #d7a9a5;
-        }
-
-
-        .coracao-salto:nth-child(6) {
-            color: #c47e83;
-        }
-
-
-        @keyframes saltoCoracao {
-
-            0% {
-
-                opacity: 0;
-
-                transform:
-                    translate(
-                        0,
-                        0
-                    )
-                    scale(0.4)
-                    rotate(0deg);
-            }
-
-
-            15% {
-
-                opacity: 1;
-
-                transform:
-                    translate(
-                        var(--x),
-                        -20px
-                    )
-                    scale(1.1)
-                    rotate(var(--rot));
-            }
-
-
-            60% {
-
-                opacity: 1;
-
-                transform:
-                    translate(
-                        var(--x),
-                        -80px
-                    )
-                    scale(1)
-                    rotate(var(--rot));
-            }
-
-
-            100% {
-
-                opacity: 0;
-
-                transform:
-                    translate(
-                        var(--x),
-                        -125px
-                    )
-                    scale(0.75)
-                    rotate(var(--rot));
-            }
-        }
-
-
-        /* =====================================================
-           CITAÇÃO
-        ===================================================== */
-
-        .citacao {
-
-            padding:
-                40px 20px 100px;
-
-            text-align:
-                center;
-
-            position:
-                relative;
-
-            z-index:
-                2;
+        .historia-flor p {
+            font-size: 18px;
         }
 
 
         .citacao-moldura {
-
-            max-width:
-                850px;
-
-            margin:
-                auto;
-
             padding:
-                55px 40px;
-
-            position:
-                relative;
-
-            background:
-                rgba(255,248,230,0.55);
-
-            border-top:
-                1px solid var(--dourado);
-
-            border-bottom:
-                1px solid var(--dourado);
-
-            box-shadow:
-                0 10px 30px rgba(80,50,30,0.08);
-        }
-
-
-        .citacao-moldura p {
-
-            font-family:
-                "Great Vibes",
-                cursive;
-
-            font-size:
-                clamp(2.5rem,5vw,4rem);
-
-            color:
-                var(--verde-floresta);
-
-            line-height:
-                1.2;
-
-            margin:
-                15px 0;
-        }
-
-
-        .citacao-moldura small {
-
-            font-family:
-                "IM Fell English",
-                serif;
-
-            color:
-                var(--marrom-claro);
-
-            font-style:
-                italic;
-
-            letter-spacing:
-                2px;
-        }
-
-
-        .citacao-flor {
-
-            font-size:
-                30px;
-
-            color:
-                var(--dourado);
-        }
-
-
-        /* =====================================================
-           FOOTER
-        ===================================================== */
-
-        footer {
-
-            position:
-                relative;
-
-            overflow:
-                hidden;
-
-            background:
-
-                linear-gradient(
-                    135deg,
-                    #344638,
-                    #506352
-                );
-
-            color:
-                #f3e4c4;
-
-            text-align:
-                center;
-
-            padding:
-                65px 20px;
-
-            border-top:
-                3px double var(--dourado);
-
-            z-index:
-                2;
-        }
-
-
-        footer::before {
-
-            content:
-                "❦";
-
-            display:
-                block;
-
-            font-size:
-                38px;
-
-            color:
-                var(--dourado-claro);
-
-            margin-bottom:
-                10px;
+                45px 25px;
         }
 
 
         footer h3 {
-
-            font-family:
-                "Great Vibes",
-                cursive;
-
-            font-size:
-                50px;
-
-            font-weight:
-                400;
+            font-size: 40px;
         }
 
+    }
 
-        footer p {
-
-            font-family:
-                "IM Fell English",
-                serif;
-
-            margin-top:
-                8px;
-
-            font-style:
-                italic;
-
-            color:
-                #e5d8be;
-        }
-
-
-        /* =====================================================
-           RESPONSIVIDADE
-        ===================================================== */
-
-        @media (max-width:700px) {
-
-            body {
-                font-size: 18px;
-            }
-
-
-            .hero {
-
-                min-height:
-                    600px;
-            }
-
-
-            .hero::before {
-
-                inset:
-                    15px;
-            }
-
-
-            .hero-content {
-
-                padding:
-                    30px 20px;
-            }
-
-
-            .hero h1 {
-
-                font-size:
-                    4.5rem;
-            }
-
-
-            .hero-subtitle {
-
-                font-size:
-                    20px;
-            }
-
-
-            .pequeno-titulo {
-
-                letter-spacing:
-                    4px;
-            }
-
-
-            .papel-card {
-
-                padding:
-                    45px 25px;
-            }
-
-
-            .intro h2,
-            .galeria h2 {
-
-                font-size:
-                    3.5rem;
-            }
-
-
-            .flores-grid {
-
-                grid-template-columns:
-                    1fr;
-            }
-
-
-            .flor-card img {
-
-                height:
-                    230px;
-            }
-
-
-            .citacao-moldura {
-
-                padding:
-                    45px 25px;
-            }
-
-
-            footer h3 {
-
-                font-size:
-                    40px;
-            }
-
-
-            .coracao-salto {
-
-                font-size:
-                    18px;
-            }
-        }
-
-    </style>
+</style>
+```
 
 </head>
 
-
 <body>
 
+```
+<!-- FLORES DECORATIVAS -->
 
-    <!-- =====================================================
-         FLORES DECORATIVAS
-    ====================================================== -->
+<div class="flores-flutuantes">
 
-    <div class="flores-flutuantes">
+    <span>❀</span>
+    <span>✿</span>
+    <span>❁</span>
+    <span>❀</span>
+    <span>✿</span>
+    <span>❁</span>
+    <span>❀</span>
 
-        <span>❀</span>
-        <span>✿</span>
-        <span>❁</span>
-        <span>❀</span>
-        <span>✿</span>
-        <span>❁</span>
-        <span>❀</span>
+</div>
+
+
+<!-- HERO -->
+
+<header class="hero">
+
+    <div class="brilho"></div>
+
+    <div class="hero-content">
+
+        <div class="selo-botanico">
+            ❦ DIÁRIO BOTÂNICO ❦
+        </div>
+
+        <div class="pequeno-titulo">
+            Jardim • Flores • Natureza
+        </div>
+
+        <h1>
+            Jardim das Flores
+        </h1>
+
+        <div class="ornamento">
+            ❦
+        </div>
+
+        <p class="hero-subtitle">
+            Histórias, significados e encantos
+            guardados em cada pétala.
+        </p>
 
     </div>
 
+</header>
 
 
-    <!-- =====================================================
-         HERO
-    ====================================================== -->
+<!-- INTRODUÇÃO -->
 
-    <header class="hero">
+<section class="intro">
 
-        <div class="brilho"></div>
+    <div class="container">
 
+        <div class="papel-card">
 
-        <div class="hero-content">
+            <h2>
+                Bem-vindo ao nosso jardim
+            </h2>
 
-            <div class="selo-botanico">
-                ❦ DIÁRIO BOTÂNICO ❦
+            <div class="divisor">
+                ❧
+                <span>✿</span>
+                ❧
             </div>
 
+            <p>
+                Este blog nasceu da paixão por botânica e
+                pela beleza que as flores trazem ao nosso
+                dia a dia. Aqui você vai conhecer histórias,
+                significados e curiosidades por trás das
+                flores mais admiradas do mundo.
+            </p>
 
-            <div class="pequeno-titulo">
-                Jardim • Flores • Natureza
-            </div>
+            <br>
 
+            <p>
+                Desde as clássicas rosas românticas até as
+                exóticas orquídeas tropicais, cada pétala
+                carrega uma mensagem única.
+            </p>
 
-            <h1>
-                Jardim das Flores
-            </h1>
+            <br>
 
-
-            <div class="ornamento">
-                ❦
-            </div>
-
-
-            <p class="hero-subtitle">
-                Histórias, significados e encantos
-                guardados em cada pétala.
+            <p>
+                Afinal, flores não são apenas decoração —
+                são poesia viva, sentimentos em cores e
+                natureza em seu estado mais puro.
             </p>
 
         </div>
 
-    </header>
+    </div>
+
+</section>
 
 
+<!-- GALERIA -->
 
-    <!-- =====================================================
-         INTRODUÇÃO
-    ====================================================== -->
+<main class="galeria">
 
-    <section class="intro">
+    <div class="container">
 
-        <div class="container">
+        <div class="titulo-secao">
 
-            <div class="papel-card">
+            <h2>
+                Nossas Flores Favoritas
+            </h2>
 
-                <h2>
-                    Bem-vindo ao nosso jardim
-                </h2>
+            <p class="subtitulo">
+                Uma pequena coleção das maravilhas do jardim
+            </p>
+
+        </div>
 
 
-                <div class="divisor">
+        <div class="flores-grid">
 
-                    ❧
 
-                    <span>✿</span>
+            <!-- ROSA -->
 
-                    ❧
+            <article class="flor-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1496062031456-07b8f162a322?w=900&auto=format&fit=crop&q=90"
+                    alt="Rosa vermelha"
+                    loading="lazy"
+                >
+
+                <div class="flor-info">
+
+                    <h3>
+                        🌹 Rosa Vermelha
+                    </h3>
+
+                    <p>
+                        <strong>Cor:</strong>
+                        Vermelho intenso
+                    </p>
+
+                    <p>
+                        <strong>Origem:</strong>
+                        Ásia
+                    </p>
+
+                    <p>
+                        <strong>Significado:</strong>
+                        Amor, paixão e romance
+                    </p>
+
+                    <p>
+                        <strong>Uso:</strong>
+                        Buquês românticos e declarações de amor.
+                    </p>
+
+                    <div class="curiosidade">
+                        💡 A rosa vermelha tornou-se um dos
+                        maiores símbolos universais do amor.
+                    </div>
+
+                    <button
+                        class="btn-curtir"
+                        onclick="curtir(this)"
+                    >
+                        <span class="icone">♡</span>
+                        Curtir
+                        <span class="contador">0</span>
+                    </button>
 
                 </div>
 
-
-                <p>
-                    Este blog nasceu da paixão por botânica e
-                    pela beleza que as flores trazem ao nosso
-                    dia a dia. Aqui você vai conhecer histórias,
-                    significados e curiosidades por trás das
-                    flores mais admiradas do mundo.
-                </p>
+            </article>
 
 
-                <br>
+            <!-- GIRASSOL -->
+
+            <article class="flor-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1597848212624-e19c6e3b5f3e?w=900&auto=format&fit=crop"
+                    alt="Girassol"
+                    loading="lazy"
+                >
+
+                <div class="flor-info">
+
+                    <h3>
+                        🌻 Girassol
+                    </h3>
+
+                    <p>
+                        <strong>Cor:</strong>
+                        Amarelo dourado
+                    </p>
+
+                    <p>
+                        <strong>Origem:</strong>
+                        América do Norte
+                    </p>
+
+                    <p>
+                        <strong>Significado:</strong>
+                        Alegria, lealdade e adoração
+                    </p>
+
+                    <p>
+                        <strong>Uso:</strong>
+                        Decoração, presentes e arranjos.
+                    </p>
+
+                    <div class="curiosidade">
+                        💡 O girassol jovem acompanha o movimento
+                        do sol durante o dia.
+                    </div>
+
+                    <button
+                        class="btn-curtir"
+                        onclick="curtir(this)"
+                    >
+                        <span class="icone">♡</span>
+                        Curtir
+                        <span class="contador">0</span>
+                    </button>
+
+                </div>
+
+            </article>
 
 
-                <p>
-                    Desde as clássicas rosas românticas até as
-                    exóticas orquídeas tropicais, cada pétala
-                    carrega uma mensagem única. Explore nossa
-                    galeria, descubra qual flor combina com cada
-                    momento da vida e compartilhe aquilo que mais
-                    encantar você.
-                </p>
+            <!-- ORQUÍDEA -->
+
+            <article class="flor-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1560717789-0ac7c58ac90a?w=900&auto=format&fit=crop"
+                    alt="Orquídea"
+                    loading="lazy"
+                >
+
+                <div class="flor-info">
+
+                    <h3>
+                        🌺 Orquídea
+                    </h3>
+
+                    <p>
+                        <strong>Cor:</strong>
+                        Branco, rosa ou roxo
+                    </p>
+
+                    <p>
+                        <strong>Origem:</strong>
+                        Sudeste Asiático e Austrália
+                    </p>
+
+                    <p>
+                        <strong>Significado:</strong>
+                        Beleza, elegância e força
+                    </p>
+
+                    <p>
+                        <strong>Uso:</strong>
+                        Decoração e presentes especiais.
+                    </p>
+
+                    <div class="curiosidade">
+                        💡 As orquídeas formam uma das maiores
+                        famílias de plantas com flores.
+                    </div>
+
+                    <button
+                        class="btn-curtir"
+                        onclick="curtir(this)"
+                    >
+                        <span class="icone">♡</span>
+                        Curtir
+                        <span class="contador">0</span>
+                    </button>
+
+                </div>
+
+            </article>
 
 
-                <br>
+            <!-- TULIPA -->
+
+            <article class="flor-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1520763185298-1b434c919102?w=900&auto=format&fit=crop"
+                    alt="Tulipas"
+                    loading="lazy"
+                >
+
+                <div class="flor-info">
+
+                    <h3>
+                        🌷 Tulipa
+                    </h3>
+
+                    <p>
+                        <strong>Cor:</strong>
+                        Rosa, vermelho, amarelo ou branco
+                    </p>
+
+                    <p>
+                        <strong>Origem:</strong>
+                        Ásia Central
+                    </p>
+
+                    <p>
+                        <strong>Significado:</strong>
+                        Amor, renovação e primavera
+                    </p>
+
+                    <p>
+                        <strong>Uso:</strong>
+                        Jardins e arranjos primaveris.
+                    </p>
+
+                    <div class="curiosidade">
+                        💡 A Tulipomania ocorreu na Holanda
+                        durante o século XVII.
+                    </div>
+
+                    <button
+                        class="btn-curtir"
+                        onclick="curtir(this)"
+                    >
+                        <span class="icone">♡</span>
+                        Curtir
+                        <span class="contador">0</span>
+                    </button>
+
+                </div>
+
+            </article>
 
 
-                <p>
-                    Afinal, flores não são apenas decoração —
-                    são poesia viva, sentimentos em cores e
-                    natureza em seu estado mais puro.
-                </p>
+            <!-- LÍRIO -->
 
-            </div>
+            <article class="flor-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?w=900&auto=format&fit=crop"
+                    alt="Lírio branco"
+                    loading="lazy"
+                >
+
+                <div class="flor-info">
+
+                    <h3>
+                        🏵️ Lírio Branco
+                    </h3>
+
+                    <p>
+                        <strong>Cor:</strong>
+                        Branco puro
+                    </p>
+
+                    <p>
+                        <strong>Origem:</strong>
+                        Europa, Ásia e América do Norte
+                    </p>
+
+                    <p>
+                        <strong>Significado:</strong>
+                        Pureza e inocência
+                    </p>
+
+                    <p>
+                        <strong>Uso:</strong>
+                        Casamentos e cerimônias.
+                    </p>
+
+                    <div class="curiosidade">
+                        💡 O lírio possui grande importância
+                        simbólica em diferentes culturas.
+                    </div>
+
+                    <button
+                        class="btn-curtir"
+                        onclick="curtir(this)"
+                    >
+                        <span class="icone">♡</span>
+                        Curtir
+                        <span class="contador">0</span>
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- HORTÊNSIA -->
+
+            <article class="flor-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1597287821812-0d1a5f2e9b9e?w=900&auto=format&fit=crop"
+                    alt="Hortênsias"
+                    loading="lazy"
+                >
+
+                <div class="flor-info">
+
+                    <h3>
+                        💠 Hortênsia
+                    </h3>
+
+                    <p>
+                        <strong>Cor:</strong>
+                        Azul, rosa, roxo ou branco
+                    </p>
+
+                    <p>
+                        <strong>Origem:</strong>
+                        Japão e Leste da Ásia
+                    </p>
+
+                    <p>
+                        <strong>Significado:</strong>
+                        Gratidão e emoção sincera
+                    </p>
+
+                    <p>
+                        <strong>Uso:</strong>
+                        Jardins, casamentos e arranjos.
+                    </p>
+
+                    <div class="curiosidade">
+                        💡 Algumas hortênsias podem mudar de
+                        cor dependendo do solo.
+                    </div>
+
+                    <button
+                        class="btn-curtir"
+                        onclick="curtir(this)"
+                    >
+                        <span class="icone">♡</span>
+                        Curtir
+                        <span class="contador">0</span>
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- MARGARIDA -->
+
+            <article class="flor-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=900&auto=format&fit=crop"
+                    alt="Margaridas"
+                    loading="lazy"
+                >
+
+                <div class="flor-info">
+
+                    <h3>
+                        🌼 Margarida
+                    </h3>
+
+                    <p>
+                        <strong>Cor:</strong>
+                        Branco com centro amarelo
+                    </p>
+
+                    <p>
+                        <strong>Origem:</strong>
+                        Europa e Norte da África
+                    </p>
+
+                    <p>
+                        <strong>Significado:</strong>
+                        Inocência e alegria
+                    </p>
+
+                    <p>
+                        <strong>Uso:</strong>
+                        Coroas de flores e decoração.
+                    </p>
+
+                    <div class="curiosidade">
+                        💡 Uma margarida aparente é formada
+                        por muitas pequenas flores.
+                    </div>
+
+                    <button
+                        class="btn-curtir"
+                        onclick="curtir(this)"
+                    >
+                        <span class="icone">♡</span>
+                        Curtir
+                        <span class="contador">0</span>
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- LAVANDA -->
+
+            <article class="flor-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1499002238440-d264edd596ec?w=900&auto=format&fit=crop"
+                    alt="Campo de lavanda"
+                    loading="lazy"
+                >
+
+                <div class="flor-info">
+
+                    <h3>
+                        💜 Lavanda
+                    </h3>
+
+                    <p>
+                        <strong>Cor:</strong>
+                        Roxo e lilás
+                    </p>
+
+                    <p>
+                        <strong>Origem:</strong>
+                        Região do Mediterrâneo
+                    </p>
+
+                    <p>
+                        <strong>Significado:</strong>
+                        Serenidade e devoção
+                    </p>
+
+                    <p>
+                        <strong>Uso:</strong>
+                        Aromatização, decoração e perfumaria.
+                    </p>
+
+                    <div class="curiosidade">
+                        💡 A lavanda possui uma longa história
+                        ligada a perfumes e banhos aromáticos.
+                    </div>
+
+                    <button
+                        class="btn-curtir"
+                        onclick="curtir(this)"
+                    >
+                        <span class="icone">♡</span>
+                        Curtir
+                        <span class="contador">0</span>
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- PEÔNIA -->
+
+            <article class="flor-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?w=900&auto=format&fit=crop"
+                    alt="Peônia rosa"
+                    loading="lazy"
+                >
+
+                <div class="flor-info">
+
+                    <h3>
+                        🌸 Peônia
+                    </h3>
+
+                    <p>
+                        <strong>Cor:</strong>
+                        Rosa, branco, vermelho ou coral
+                    </p>
+
+                    <p>
+                        <strong>Origem:</strong>
+                        China e Europa
+                    </p>
+
+                    <p>
+                        <strong>Significado:</strong>
+                        Prosperidade, honra e romance
+                    </p>
+
+                    <p>
+                        <strong>Uso:</strong>
+                        Casamentos e decoração.
+                    </p>
+
+                    <div class="curiosidade">
+                        💡 Na cultura chinesa, a peônia é
+                        tradicionalmente ligada à prosperidade.
+                    </div>
+
+                    <button
+                        class="btn-curtir"
+                        onclick="curtir(this)"
+                    >
+                        <span class="icone">♡</span>
+                        Curtir
+                        <span class="contador">0</span>
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- LÓTUS -->
+
+            <article class="flor-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1509223197845-458d87318791?w=900&auto=format&fit=crop"
+                    alt="Flor de lótus"
+                    loading="lazy"
+                >
+
+                <div class="flor-info">
+
+                    <h3>
+                        🪷 Flor de Lótus
+                    </h3>
+
+                    <p>
+                        <strong>Cor:</strong>
+                        Rosa, branco ou azul
+                    </p>
+
+                    <p>
+                        <strong>Origem:</strong>
+                        Ásia tropical
+                    </p>
+
+                    <p>
+                        <strong>Significado:</strong>
+                        Renascimento e pureza
+                    </p>
+
+                    <p>
+                        <strong>Uso:</strong>
+                        Arte, meditação e tradições orientais.
+                    </p>
+
+                    <div class="curiosidade">
+                        💡 O lótus tornou-se um poderoso símbolo
+                        de transformação.
+                    </div>
+
+                    <button
+                        class="btn-curtir"
+                        onclick="curtir(this)"
+                    >
+                        <span class="icone">♡</span>
+                        Curtir
+                        <span class="contador">0</span>
+                    </button>
+
+                </div>
+
+            </article>
 
         </div>
 
-    </section>
+    </div>
 
+</main>
 
 
-    <!-- =====================================================
-         GALERIA
-    ====================================================== -->
+<!-- =====================================================
+     HISTÓRIAS DAS FLORES
+====================================================== -->
 
-    <main class="galeria">
+<section class="historias">
 
-        <div class="container">
+    <div class="container">
 
+        <div class="historias-titulo">
 
-            <div class="titulo-secao">
-
-                <h2>
-                    Nossas Flores Favoritas
-                </h2>
-
-                <p class="subtitulo">
-                    Uma pequena coleção das maravilhas do jardim
-                </p>
-
-            </div>
-
-
-
-            <div class="flores-grid">
-
-
-                <!-- =================================================
-                     ROSA
-                ================================================== -->
-
-                <article class="flor-card">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1496062031456-07b8f162a322?w=900&auto=format&fit=crop&q=90"
-                        alt="Rosa vermelha"
-                        loading="lazy"
-                    >
-
-
-                    <div class="flor-info">
-
-                        <h3>
-                            🌹 Rosa Vermelha
-                        </h3>
-
-
-                        <p>
-                            <strong>Cor:</strong>
-                            Vermelho intenso
-                        </p>
-
-
-                        <p>
-                            <strong>Origem:</strong>
-                            Ásia
-                        </p>
-
-
-                        <p>
-                            <strong>Significado:</strong>
-                            Amor, paixão e romance
-                        </p>
-
-
-                        <p>
-                            <strong>Uso:</strong>
-                            Buquês românticos, declarações de amor
-                            e aniversários de casamento.
-                        </p>
-
-
-                        <div class="curiosidade">
-
-                            💡 A rosa vermelha tornou-se um dos
-                            maiores símbolos universais do amor
-                            e da paixão.
-
-                        </div>
-
-
-                        <div class="botao-area">
-
-                            <button
-                                class="btn-curtir"
-                                onclick="curtir(this)"
-                            >
-
-                                <span class="icone">
-                                    ♡
-                                </span>
-
-                                Curtir
-
-                                <span class="contador">
-                                    0
-                                </span>
-
-                            </button>
-
-
-                            <div class="coracoes"></div>
-
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- =================================================
-                     GIRASSOL
-                ================================================== -->
-
-                <article class="flor-card">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1597848212624-e19c6e3b5f3e?w=900&auto=format&fit=crop"
-                        alt="Girassol"
-                        loading="lazy"
-                    >
-
-
-                    <div class="flor-info">
-
-                        <h3>
-                            🌻 Girassol
-                        </h3>
-
-
-                        <p>
-                            <strong>Cor:</strong>
-                            Amarelo dourado
-                        </p>
-
-
-                        <p>
-                            <strong>Origem:</strong>
-                            América do Norte
-                        </p>
-
-
-                        <p>
-                            <strong>Significado:</strong>
-                            Alegria, lealdade e adoração
-                        </p>
-
-
-                        <p>
-                            <strong>Uso:</strong>
-                            Decoração rústica, presentes de amizade
-                            e arranjos de verão.
-                        </p>
-
-
-                        <div class="curiosidade">
-
-                            💡 O girassol jovem acompanha o movimento
-                            do sol durante o dia, comportamento conhecido
-                            como heliotropismo.
-
-                        </div>
-
-
-                        <div class="botao-area">
-
-                            <button
-                                class="btn-curtir"
-                                onclick="curtir(this)"
-                            >
-
-                                <span class="icone">
-                                    ♡
-                                </span>
-
-                                Curtir
-
-                                <span class="contador">
-                                    0
-                                </span>
-
-                            </button>
-
-
-                            <div class="coracoes"></div>
-
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- =================================================
-                     ORQUÍDEA
-                ================================================== -->
-
-                <article class="flor-card">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1560717789-0ac7c58ac90a?w=900&auto=format&fit=crop"
-                        alt="Orquídea"
-                        loading="lazy"
-                    >
-
-
-                    <div class="flor-info">
-
-                        <h3>
-                            🌺 Orquídea
-                        </h3>
-
-
-                        <p>
-                            <strong>Cor:</strong>
-                            Branco, rosa ou roxo
-                        </p>
-
-
-                        <p>
-                            <strong>Origem:</strong>
-                            Sudeste Asiático e Austrália
-                        </p>
-
-
-                        <p>
-                            <strong>Significado:</strong>
-                            Beleza, elegância e força
-                        </p>
-
-
-                        <p>
-                            <strong>Uso:</strong>
-                            Decoração sofisticada e presentes especiais.
-                        </p>
-
-
-                        <div class="curiosidade">
-
-                            💡 As orquídeas formam uma das maiores
-                            famílias de plantas com flores do mundo.
-
-                        </div>
-
-
-                        <div class="botao-area">
-
-                            <button
-                                class="btn-curtir"
-                                onclick="curtir(this)"
-                            >
-
-                                <span class="icone">
-                                    ♡
-                                </span>
-
-                                Curtir
-
-                                <span class="contador">
-                                    0
-                                </span>
-
-                            </button>
-
-
-                            <div class="coracoes"></div>
-
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- =================================================
-                     TULIPA
-                ================================================== -->
-
-                <article class="flor-card">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1520763185298-1b434c919102?w=900&auto=format&fit=crop"
-                        alt="Tulipas"
-                        loading="lazy"
-                    >
-
-
-                    <div class="flor-info">
-
-                        <h3>
-                            🌷 Tulipa
-                        </h3>
-
-
-                        <p>
-                            <strong>Cor:</strong>
-                            Rosa, vermelho, amarelo ou branco
-                        </p>
-
-
-                        <p>
-                            <strong>Origem:</strong>
-                            Ásia Central
-                        </p>
-
-
-                        <p>
-                            <strong>Significado:</strong>
-                            Amor, renovação e primavera
-                        </p>
-
-
-                        <p>
-                            <strong>Uso:</strong>
-                            Jardins, arranjos primaveris e presentes.
-                        </p>
-
-
-                        <div class="curiosidade">
-
-                            💡 Durante a famosa Tulipomania, na Holanda
-                            do século XVII, alguns bulbos chegaram a
-                            alcançar valores extraordinários.
-
-                        </div>
-
-
-                        <div class="botao-area">
-
-                            <button
-                                class="btn-curtir"
-                                onclick="curtir(this)"
-                            >
-
-                                <span class="icone">
-                                    ♡
-                                </span>
-
-                                Curtir
-
-                                <span class="contador">
-                                    0
-                                </span>
-
-                            </button>
-
-
-                            <div class="coracoes"></div>
-
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- =================================================
-                     LÍRIO
-                ================================================== -->
-
-                <article class="flor-card">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?w=900&auto=format&fit=crop"
-                        alt="Lírio branco"
-                        loading="lazy"
-                    >
-
-
-                    <div class="flor-info">
-
-                        <h3>
-                            🏵️ Lírio Branco
-                        </h3>
-
-
-                        <p>
-                            <strong>Cor:</strong>
-                            Branco puro
-                        </p>
-
-
-                        <p>
-                            <strong>Origem:</strong>
-                            Europa, Ásia e América do Norte
-                        </p>
-
-
-                        <p>
-                            <strong>Significado:</strong>
-                            Pureza e inocência
-                        </p>
-
-
-                        <p>
-                            <strong>Uso:</strong>
-                            Casamentos, cerimônias e decoração.
-                        </p>
-
-
-                        <div class="curiosidade">
-
-                            💡 O lírio é uma flor carregada de
-                            simbolismo em diferentes culturas
-                            e tradições.
-
-                        </div>
-
-
-                        <div class="botao-area">
-
-                            <button
-                                class="btn-curtir"
-                                onclick="curtir(this)"
-                            >
-
-                                <span class="icone">
-                                    ♡
-                                </span>
-
-                                Curtir
-
-                                <span class="contador">
-                                    0
-                                </span>
-
-                            </button>
-
-
-                            <div class="coracoes"></div>
-
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- =================================================
-                     HORTÊNSIA
-                ================================================== -->
-
-                <article class="flor-card">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1597287821812-0d1a5f2e9b9e?w=900&auto=format&fit=crop"
-                        alt="Hortênsias"
-                        loading="lazy"
-                    >
-
-
-                    <div class="flor-info">
-
-                        <h3>
-                            💠 Hortênsia
-                        </h3>
-
-
-                        <p>
-                            <strong>Cor:</strong>
-                            Azul, rosa, roxo ou branco
-                        </p>
-
-
-                        <p>
-                            <strong>Origem:</strong>
-                            Japão e Leste da Ásia
-                        </p>
-
-
-                        <p>
-                            <strong>Significado:</strong>
-                            Gratidão e emoção sincera
-                        </p>
-
-
-                        <p>
-                            <strong>Uso:</strong>
-                            Jardins, casamentos e arranjos.
-                        </p>
-
-
-                        <div class="curiosidade">
-
-                            💡 Algumas hortênsias podem mudar de cor
-                            dependendo da acidez do solo.
-
-                        </div>
-
-
-                        <div class="botao-area">
-
-                            <button
-                                class="btn-curtir"
-                                onclick="curtir(this)"
-                            >
-
-                                <span class="icone">
-                                    ♡
-                                </span>
-
-                                Curtir
-
-                                <span class="contador">
-                                    0
-                                </span>
-
-                            </button>
-
-
-                            <div class="coracoes"></div>
-
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- =================================================
-                     MARGARIDA
-                ================================================== -->
-
-                <article class="flor-card">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=900&auto=format&fit=crop"
-                        alt="Margaridas"
-                        loading="lazy"
-                    >
-
-
-                    <div class="flor-info">
-
-                        <h3>
-                            🌼 Margarida
-                        </h3>
-
-
-                        <p>
-                            <strong>Cor:</strong>
-                            Branco com centro amarelo
-                        </p>
-
-
-                        <p>
-                            <strong>Origem:</strong>
-                            Europa e Norte da África
-                        </p>
-
-
-                        <p>
-                            <strong>Significado:</strong>
-                            Inocência e alegria
-                        </p>
-
-
-                        <p>
-                            <strong>Uso:</strong>
-                            Coroas de flores, presentes e decoração.
-                        </p>
-
-
-                        <div class="curiosidade">
-
-                            💡 O que parece ser uma única flor é,
-                            na verdade, uma estrutura formada por
-                            muitas pequenas flores.
-
-                        </div>
-
-
-                        <div class="botao-area">
-
-                            <button
-                                class="btn-curtir"
-                                onclick="curtir(this)"
-                            >
-
-                                <span class="icone">
-                                    ♡
-                                </span>
-
-                                Curtir
-
-                                <span class="contador">
-                                    0
-                                </span>
-
-                            </button>
-
-
-                            <div class="coracoes"></div>
-
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- =================================================
-                     LAVANDA
-                ================================================== -->
-
-                <article class="flor-card">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1499002238440-d264edd596ec?w=900&auto=format&fit=crop"
-                        alt="Campo de lavanda"
-                        loading="lazy"
-                    >
-
-
-                    <div class="flor-info">
-
-                        <h3>
-                            💜 Lavanda
-                        </h3>
-
-
-                        <p>
-                            <strong>Cor:</strong>
-                            Roxo e lilás
-                        </p>
-
-
-                        <p>
-                            <strong>Origem:</strong>
-                            Região do Mediterrâneo
-                        </p>
-
-
-                        <p>
-                            <strong>Significado:</strong>
-                            Serenidade e devoção
-                        </p>
-
-
-                        <p>
-                            <strong>Uso:</strong>
-                            Aromatização, decoração e perfumaria.
-                        </p>
-
-
-                        <div class="curiosidade">
-
-                            💡 O nome lavanda está relacionado ao
-                            latim "lavare", associado à ideia de lavar.
-
-                        </div>
-
-
-                        <div class="botao-area">
-
-                            <button
-                                class="btn-curtir"
-                                onclick="curtir(this)"
-                            >
-
-                                <span class="icone">
-                                    ♡
-                                </span>
-
-                                Curtir
-
-                                <span class="contador">
-                                    0
-                                </span>
-
-                            </button>
-
-
-                            <div class="coracoes"></div>
-
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- =================================================
-                     PEÔNIA
-                ================================================== -->
-
-                <article class="flor-card">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?w=900&auto=format&fit=crop"
-                        alt="Peônia rosa"
-                        loading="lazy"
-                    >
-
-
-                    <div class="flor-info">
-
-                        <h3>
-                            🌸 Peônia
-                        </h3>
-
-
-                        <p>
-                            <strong>Cor:</strong>
-                            Rosa, branco, vermelho ou coral
-                        </p>
-
-
-                        <p>
-                            <strong>Origem:</strong>
-                            China e Europa
-                        </p>
-
-
-                        <p>
-                            <strong>Significado:</strong>
-                            Prosperidade, honra e romance
-                        </p>
-
-
-                        <p>
-                            <strong>Uso:</strong>
-                            Casamentos, decoração e perfumaria.
-                        </p>
-
-
-                        <div class="curiosidade">
-
-                            💡 Na cultura chinesa, a peônia possui
-                            longa tradição como símbolo de
-                            prosperidade e beleza.
-
-                        </div>
-
-
-                        <div class="botao-area">
-
-                            <button
-                                class="btn-curtir"
-                                onclick="curtir(this)"
-                            >
-
-                                <span class="icone">
-                                    ♡
-                                </span>
-
-                                Curtir
-
-                                <span class="contador">
-                                    0
-                                </span>
-
-                            </button>
-
-
-                            <div class="coracoes"></div>
-
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- =================================================
-                     LÓTUS
-                ================================================== -->
-
-                <article class="flor-card">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1509223197845-458d87318791?w=900&auto=format&fit=crop"
-                        alt="Flor de lótus"
-                        loading="lazy"
-                    >
-
-
-                    <div class="flor-info">
-
-                        <h3>
-                            🪷 Flor de Lótus
-                        </h3>
-
-
-                        <p>
-                            <strong>Cor:</strong>
-                            Rosa, branco ou azul
-                        </p>
-
-
-                        <p>
-                            <strong>Origem:</strong>
-                            Ásia tropical
-                        </p>
-
-
-                        <p>
-                            <strong>Significado:</strong>
-                            Renascimento, pureza e iluminação
-                        </p>
-
-
-                        <p>
-                            <strong>Uso:</strong>
-                            Arte, meditação e tradições orientais.
-                        </p>
-
-
-                        <div class="curiosidade">
-
-                            💡 Por nascer em ambientes lamacentos
-                            e florescer sobre a água, o lótus tornou-se
-                            um poderoso símbolo de transformação.
-
-                        </div>
-
-
-                        <div class="botao-area">
-
-                            <button
-                                class="btn-curtir"
-                                onclick="curtir(this)"
-                            >
-
-                                <span class="icone">
-                                    ♡
-                                </span>
-
-                                Curtir
-
-                                <span class="contador">
-                                    0
-                                </span>
-
-                            </button>
-
-
-                            <div class="coracoes"></div>
-
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-            </div>
-
-        </div>
-
-    </main>
-
-
-
-    <!-- =====================================================
-         CITAÇÃO
-    ====================================================== -->
-
-    <section class="citacao">
-
-        <div class="citacao-moldura">
-
-            <div class="citacao-flor">
-                ❀
-            </div>
-
+            <h2>
+                Histórias do Jardim
+            </h2>
 
             <p>
-                "Onde florescem as flores,
-                floresce também a esperança."
+                Cada flor carrega consigo uma história,
+                uma cultura e um significado especial.
             </p>
-
-
-            <small>
-                — Jardim das Flores
-            </small>
 
         </div>
 
-    </section>
+
+        <!-- ROSA -->
+
+        <article class="historia-flor">
+
+            <div class="historia-cabecalho">
+
+                <div class="historia-icone">
+                    🌹
+                </div>
+
+                <div>
+
+                    <h3>
+                        A História da Rosa
+                    </h3>
+
+                    <span class="historia-nome-cientifico">
+                        Rosa spp.
+                    </span>
+
+                </div>
+
+            </div>
+
+            <p>
+                A rosa acompanha a humanidade há milhares de anos.
+                Cultivada inicialmente em diferentes regiões da Ásia
+                e posteriormente espalhada pela Europa, tornou-se
+                uma das flores mais admiradas da história.
+            </p>
+
+            <p>
+                Na Grécia e em Roma antigas, a rosa estava relacionada
+                ao amor, à beleza e às divindades. Com o passar dos
+                séculos, a <strong>rosa vermelha</strong> tornou-se
+                um dos maiores símbolos universais de paixão,
+                romance e amor.
+            </p>
+
+        </article>
 
 
+        <!-- GIRASSOL -->
 
-    <!-- =====================================================
-         RODAPÉ
-    ====================================================== -->
+        <article class="historia-flor">
 
-    <footer>
+            <div class="historia-cabecalho">
 
-        <h3>
-            Jardim das Flores
-        </h3>
+                <div class="historia-icone">
+                    🌻
+                </div>
 
+                <div>
+
+                    <h3>
+                        A História do Girassol
+                    </h3>
+
+                    <span class="historia-nome-cientifico">
+                        Helianthus annuus
+                    </span>
+
+                </div>
+
+            </div>
+
+            <p>
+                O girassol é originário da América do Norte e foi
+                cultivado por povos indígenas muito antes de chegar
+                à Europa. Suas sementes eram utilizadas como alimento
+                e a planta possuía diferentes usos culturais.
+            </p>
+
+            <p>
+                Depois de chegar à Europa, o girassol conquistou
+                jardins e artistas. Suas grandes flores amarelas
+                ficaram especialmente famosas nas pinturas de
+                <strong>Vincent van Gogh</strong>. Por sua aparência
+                semelhante ao sol, tornou-se símbolo de alegria,
+                energia e esperança.
+            </p>
+
+        </article>
+
+
+        <!-- ORQUÍDEA -->
+
+        <article class="historia-flor">
+
+            <div class="historia-cabecalho">
+
+                <div class="historia-icone">
+                    🌺
+                </div>
+
+                <div>
+
+                    <h3>
+                        A História da Orquídea
+                    </h3>
+
+                    <span class="historia-nome-cientifico">
+                        Orchidaceae
+                    </span>
+
+                </div>
+
+            </div>
+
+            <p>
+                As orquídeas formam uma das maiores famílias de
+                plantas com flores existentes. Elas podem ser
+                encontradas em diversas partes do mundo e apresentam
+                uma enorme variedade de formas, cores e tamanhos.
+            </p>
+
+            <p>
+                Durante os séculos XVIII e XIX, as orquídeas despertaram
+                enorme interesse entre colecionadores europeus.
+                Sua aparência delicada fez com que se tornassem
+                símbolos de <strong>elegância, beleza e exclusividade</strong>.
+            </p>
+
+        </article>
+
+
+        <!-- TULIPA -->
+
+        <article class="historia-flor">
+
+            <div class="historia-cabecalho">
+
+                <div class="historia-icone">
+                    🌷
+                </div>
+
+                <div>
+
+                    <h3>
+                        A História da Tulipa
+                    </h3>
+
+                    <span class="historia-nome-cientifico">
+                        Tulipa spp.
+                    </span>
+
+                </div>
+
+            </div>
+
+            <p>
+                Embora seja atualmente muito associada à Holanda,
+                a tulipa possui origem em regiões da Ásia Central.
+                A flor chegou ao Império Otomano e posteriormente
+                foi introduzida na Europa.
+            </p>
+
+            <p>
+                No século XVII, a Holanda viveu a famosa
+                <strong>Tulipomania</strong>. Alguns bulbos raros
+                chegaram a atingir valores extraordinários.
+                Atualmente, a tulipa é conhecida como uma das
+                grandes flores da primavera.
+            </p>
+
+        </article>
+
+
+        <!-- LÍRIO -->
+
+        <article class="historia-flor">
+
+            <div class="historia-cabecalho">
+
+                <div class="historia-icone">
+                    🏵️
+                </div>
+
+                <div>
+
+                    <h3>
+                        A História do Lírio
+                    </h3>
+
+                    <span class="historia-nome-cientifico">
+                        Lilium spp.
+                    </span>
+
+                </div>
+
+            </div>
+
+            <p>
+                Os lírios são conhecidos e cultivados há muitos
+                séculos. Suas formas elegantes aparecem em antigas
+                obras de arte e em representações de diferentes
+                culturas.
+            </p>
+
+            <p>
+                O <strong>lírio branco</strong> tornou-se especialmente
+                importante no simbolismo ocidental, sendo associado
+                à pureza, inocência e renovação.
+            </p>
+
+        </article>
+
+
+        <!-- HORTÊNSIA -->
+
+        <article class="historia-flor">
+
+            <div class="historia-cabecalho">
+
+                <div class="historia-icone">
+                    💠
+                </div>
+
+                <div>
+
+                    <h3>
+                        A História da Hortênsia
+                    </h3>
+
+                    <span class="historia-nome-cientifico">
+                        Hydrangea macrophylla
+                    </span>
+
+                </div>
+
+            </div>
+
+            <p>
+                A hortênsia possui uma longa história de cultivo
+                no Japão e em outras regiões do leste da Ásia.
+                Com o passar do tempo, foram desenvolvidas muitas
+                variedades diferentes.
+            </p>
+
+            <p>
+                Dependendo das condições do solo, especialmente de
+                sua acidez e da disponibilidade de alumínio, algumas
+                hortênsias podem variar entre tons de
+                <strong>azul, rosa e roxo</strong>.
+            </p>
+
+        </article>
+
+
+        <!-- MARGARIDA -->
+
+        <article class="historia-flor">
+
+            <div class="historia-cabecalho">
+
+                <div class="historia-icone">
+                    🌼
+                </div>
+
+                <div>
+
+                    <h3>
+                        A História da Margarida
+                    </h3>
+
+                    <span class="historia-nome-cientifico">
+                        Bellis perennis
+                    </span>
+
+                </div>
+
+            </div>
+
+            <p>
+                A margarida é uma pequena flor muito conhecida nas
+                paisagens europeias. Sua aparência simples e delicada
+                fez com que ela se tornasse uma das flores mais
+                populares em jardins e campos.
+            </p>
+
+            <p>
+                Na cultura popular, ficou famosa pela brincadeira
+                de retirar suas pétalas enquanto se diz
+                "bem-me-quer, mal-me-quer". Por isso, tornou-se
+                associada à <strong>inocência, juventude,
+                simplicidade e alegria</strong>.
+            </p>
+
+        </article>
+
+
+        <!-- LAVANDA -->
+
+        <article class="historia-flor">
+
+            <div class="historia-cabecalho">
+
+                <div class="historia-icone">
+                    💜
+                </div>
+
+                <div>
+
+                    <h3>
+                        A História da Lavanda
+                    </h3>
+
+                    <span class="historia-nome-cientifico">
+                        Lavandula spp.
+                    </span>
+
+                </div>
+
+            </div>
+
+            <p>
+                A lavanda é originária principalmente da região
+                do Mediterrâneo e possui uma longa relação com
+                a história humana. Povos antigos utilizavam suas
+                flores aromáticas em banhos e perfumes.
+            </p>
+
+            <p>
+                Seu aroma marcante fez com que a lavanda se tornasse
+                importante na perfumaria e na produção de produtos
+                aromáticos. Sua cor e perfume ajudaram a associá-la
+                a <strong>calma, serenidade e tranquilidade</strong>.
+            </p>
+
+        </article>
+
+
+        <!-- PEÔNIA -->
+
+        <article class="historia-flor">
+
+            <div class="historia-cabecalho">
+
+                <div class="historia-icone">
+                    🌸
+                </div>
+
+                <div>
+
+                    <h3>
+                        A História da Peônia
+                    </h3>
+
+                    <span class="historia-nome-cientifico">
+                        Paeonia spp.
+                    </span>
+
+                </div>
+
+            </div>
+
+            <p>
+                A peônia possui uma história especialmente importante
+                na China, onde é cultivada e admirada há muitos séculos.
+                Suas flores grandes e exuberantes fizeram com que ela
+                fosse associada à riqueza, beleza e prosperidade.
+            </p>
+
+            <p>
+                Na cultura chinesa, a peônia ganhou grande prestígio
+                e ficou conhecida como a <strong>"rainha das flores"</strong>.
+                Seu cultivo posteriormente se espalhou para outras
+                regiões.
+            </p>
+
+        </article>
+
+
+        <!-- LÓTUS -->
+
+        <article class="historia-flor">
+
+            <div class="historia-cabecalho">
+
+                <div class="historia-icone">
+                    🪷
+                </div>
+
+                <div>
+
+                    <h3>
+                        A História do Lótus
+                    </h3>
+
+                    <span class="historia-nome-cientifico">
+                        Nelumbo nucifera
+                    </span>
+
+                </div>
+
+            </div>
+
+            <p>
+                O lótus possui uma das histórias simbólicas mais
+                antigas entre as flores. Encontrado principalmente
+                em regiões da Ásia, tornou-se profundamente ligado
+                às tradições culturais e espirituais de diferentes
+                povos.
+            </p>
+
+            <p>
+                A flor nasce em ambientes de lama e abre suas pétalas
+                sobre a água. Por essa característica, tornou-se um
+                poderoso símbolo de <strong>renascimento, pureza,
+                transformação e iluminação</strong>.
+            </p>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- CITAÇÃO -->
+
+<section class="citacao">
+
+    <div class="citacao-moldura">
+
+        <div class="citacao-flor">
+            ❀
+        </div>
 
         <p>
-            ❦ Cultivado com carinho desde 2026 ❦
+            "Onde florescem as flores,
+            floresce também a esperança."
         </p>
 
+        <small>
+            — Jardim das Flores
+        </small>
 
-        <p>
-            Onde cada flor conta uma história.
-        </p>
+    </div>
 
-    </footer>
-
-
-
-    <!-- =====================================================
-         JAVASCRIPT
-         TUDO CONTINUA DENTRO DO HTML
-    ====================================================== -->
-
-    <script>
-
-        function curtir(botao) {
-
-            const icone =
-                botao.querySelector(".icone");
-
-            const contador =
-                botao.querySelector(".contador");
-
-            const areaCoracoes =
-                botao.parentElement.querySelector(".coracoes");
-
-            let quantidade =
-                parseInt(contador.textContent);
+</section>
 
 
-            /*
-                Se já estiver curtido,
-                remove a curtida.
-            */
+<!-- RODAPÉ -->
 
-            if (
-                botao.classList.contains("curtido")
-            ) {
+<footer>
 
-                botao.classList.remove("curtido");
+    <h3>
+        Jardim das Flores
+    </h3>
 
-                icone.textContent = "♡";
+    <p>
+        ❦ Cultivado com carinho desde 2026 ❦
+    </p>
 
-                quantidade--;
+    <p>
+        Onde cada flor conta uma história.
+    </p>
 
-                contador.textContent =
-                    quantidade;
-
-                return;
-            }
+</footer>
 
 
-            /*
-                Ativa a curtida.
-            */
+<!-- JAVASCRIPT -->
 
-            botao.classList.add("curtido");
+<script>
 
-            icone.textContent = "♥";
+    function curtir(botao) {
 
-            quantidade++;
+        const icone =
+            botao.querySelector(".icone");
+
+        const contador =
+            botao.querySelector(".contador");
+
+        let quantidade =
+            parseInt(contador.textContent);
+
+
+        if (
+            botao.classList.contains("curtido")
+        ) {
+
+            botao.classList.remove("curtido");
+
+            icone.textContent = "♡";
+
+            quantidade--;
 
             contador.textContent =
                 quantidade;
 
-
-            /*
-                Cria os corações.
-            */
-
-            criarCoracoes(areaCoracoes);
-
+            return;
         }
 
 
+        botao.classList.add("curtido");
 
-        function criarCoracoes(area) {
+        icone.textContent = "♥";
 
-            /*
-                Limpa corações antigos.
-            */
+        quantidade++;
 
-            area.innerHTML = "";
+        contador.textContent =
+            quantidade;
 
+    }
 
-            /*
-                Quantidade de corações
-                que vão saltar.
-            */
-
-            const quantidade = 6;
-
-
-            for (
-                let i = 0;
-                i < quantidade;
-                i++
-            ) {
-
-                const coracao =
-                    document.createElement("span");
-
-
-                coracao.classList.add(
-                    "coracao-salto"
-                );
-
-
-                coracao.textContent = "♥";
-
-
-                /*
-                    Cada coração recebe
-                    uma trajetória diferente.
-                */
-
-                const direcao =
-                    (Math.random() - 0.5) * 120;
-
-
-                const rotacao =
-                    (Math.random() - 0.5) * 70;
-
-
-                const tamanho =
-                    16 +
-                    Math.random() * 12;
-
-
-                const atraso =
-                    Math.random() * 0.12;
-
-
-                coracao.style.setProperty(
-                    "--x",
-                    `${direcao}px`
-                );
-
-
-                coracao.style.setProperty(
-                    "--rot",
-                    `${rotacao}deg`
-                );
-
-
-                coracao.style.fontSize =
-                    `${tamanho}px`;
-
-
-                coracao.style.animationDelay =
-                    `${atraso}s`;
-
-
-                /*
-                    Pequenas diferenças
-                    de posição inicial.
-                */
-
-                coracao.style.left =
-                    `${(Math.random() - 0.5) * 25}px`;
-
-
-                area.appendChild(
-                    coracao
-                );
-
-
-                /*
-                    Remove o elemento
-                    depois da animação.
-                */
-
-                setTimeout(
-                    () => {
-
-                        coracao.remove();
-
-                    },
-                    1400
-                );
-            }
-
-        }
-
-    </script>
-
+</script>
+```
 
 </body>
 
