@@ -2595,26 +2595,106 @@ https
 
 </html>
 
-<script>
-        /* --- FUNÇÃO DO BOTÃO (NÃO MEXER) --- */
-        const botaoTema = document.getElementById('botao-tema');
-        const temaSalvo = localStorage.getItem('tema');
-        if (temaSalvo === 'dark') {
-            document.documentElement.setAttribute('data-theme', 'dark');
-            botaoTema.textContent = '☀️ Modo Claro';
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo com Modo Escuro</title>
+    
+    <style>
+        /* Estilos Padrão (Modo Claro) */
+        body {
+            background-color: #ffffff;
+            color: #333333;
+            font-family: Arial, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+            padding: 20px;
         }
-        botaoTema.addEventListener('click', () => {
-            const temaAtual = document.documentElement.getAttribute('data-theme');
-            if (temaAtual === 'dark') {
-                document.documentElement.setAttribute('data-theme', 'light');
-                localStorage.setItem('tema', 'light');
-                botaoTema.textContent = '🌙 Modo Escuro';
-            } else {
-                document.documentElement.setAttribute('data-theme', 'dark');
-                localStorage.setItem('tema', 'dark');
-                botaoTema.textContent = '☀️ Modo Claro';
+
+        /* Estilos do Modo Escuro */
+        body.modo-escuro {
+            background-color: #121212;
+            color: #ffffff;
+        }
+
+        /* Botão de Curtir */
+        .btn-curtir {
+            padding: 8px 16px;
+            font-size: 16px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            background: transparent;
+            color: inherit;
+            border-radius: 4px;
+        }
+
+        .btn-curtir.curtido {
+            color: #e74c3c;
+            border-color: #e74c3c;
+        }
+
+        /* Botão do Modo Escuro */
+        .btn-tema {
+            margin-bottom: 20px;
+            padding: 8px 16px;
+            font-size: 16px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            background: transparent;
+            color: inherit;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Botão de alternar o modo escuro -->
+    <button class="btn-tema" onclick="alternarTema(this)">
+        🌙 Modo Escuro
+    </button>
+
+    <br>
+
+    <!-- Exemplo do seu botão de curtir -->
+    <button class="btn-curtir" onclick="curtir(this)">
+        <span class="icone">♡</span>
+        <span class="contador">0</span>
+    </button>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // Sua função de curtir existente
+        function curtir(botao) {
+            const icone = botao.querySelector(".icone");
+            const contador = botao.querySelector(".contador");
+            let quantidade = parseInt(contador.textContent);
+
+            if (botao.classList.contains("curtido")) {
+                botao.classList.remove("curtido");
+                icone.textContent = "♡";
+                quantidade--;
+                contador.textContent = quantidade;
+                return;
             }
-        });
+
+            botao.classList.add("curtido");
+            icone.textContent = "♥";
+            quantidade++;
+            contador.textContent = quantidade;
+        }
+
+        // Nova função para alternar o modo escuro/claro
+        function alternarTema(botao) {
+            const body = document.body;
+            body.classList.toggle("modo-escuro");
+
+            if (body.classList.contains("modo-escuro")) {
+                botao.textContent = "☀️ Modo Claro";
+            } else {
+                botao.textContent = "🌙 Modo Escuro";
+            }
+        }
     </script>
 </body>
 </html>
