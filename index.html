@@ -148,8 +148,7 @@
             url("://www.transparenttextures.com/patterns/paper-fibers.png");
 https
         mix-blend-mode: multiply;
-    }
-
+}
 
     body::after {
 
@@ -2539,20 +2538,12 @@ https
     <p>
         Onde cada flor conta uma história.
     </p>
-    
+
 </footer>
 </head>
 <body>
 
-    <!-- Botão de alternar o tema -->
-    <button class="btn-modo-escuro" id="botao-tema">🌙 Modo Escuro</button>
-
-    <!-- O resto do conteúdo do seu site vem aqui -->
-
-    <!-- Link para o arquivo JavaScript separado (coloque antes de fechar o body) -->
-    <script src="script.js"></script>
-</body>
-</html>
+    </html>
 <!-- JAVASCRIPT -->
 
 <script>
@@ -2602,4 +2593,28 @@ https
 
 </body>
 
+</html>
+
+<script>
+        /* --- FUNÇÃO DO BOTÃO (NÃO MEXER) --- */
+        const botaoTema = document.getElementById('botao-tema');
+        const temaSalvo = localStorage.getItem('tema');
+        if (temaSalvo === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            botaoTema.textContent = '☀️ Modo Claro';
+        }
+        botaoTema.addEventListener('click', () => {
+            const temaAtual = document.documentElement.getAttribute('data-theme');
+            if (temaAtual === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('tema', 'light');
+                botaoTema.textContent = '🌙 Modo Escuro';
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('tema', 'dark');
+                botaoTema.textContent = '☀️ Modo Claro';
+            }
+        });
+    </script>
+</body>
 </html>
